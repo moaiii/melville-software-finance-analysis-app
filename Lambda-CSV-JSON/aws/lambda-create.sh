@@ -1,0 +1,1 @@
+claudia create --region eu-west-1 --api-module index --policies policy
