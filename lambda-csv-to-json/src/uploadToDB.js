@@ -18,6 +18,7 @@ const uploadToDb = (transactions) => {
     request
       .post({
         url,
+        json: true,
         body: transactionsWithIds,
       }, (error, response, body) => {
         if (error) {

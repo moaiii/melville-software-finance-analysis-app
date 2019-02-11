@@ -1,0 +1,37 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+button, a {
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+body {
+  filter: saturate(1.1);
+}
+
+@mixin laptop-large {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin laptop {
+  @media (min-width: 768px) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: 425px) {
+    @content;
+  }
+}
+
+@import '../ui/views/Auth/Auth.scss';
+@import '../ui/views/TransactionList/TransactionList.scss';
+@import '../ui/views/TransactionUpload/TransactionUpload.scss';

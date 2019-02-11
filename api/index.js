@@ -5,29 +5,29 @@ const api = new ApiBuilder();
 const dynamoDb = new AWS.DynamoDB.DocumentClient();
 
 api.post('/transactions', function (request) {
-  return {"request.body": request.body, "type": typeof request.body, request: request};
-  // const params = {
-  //   RequestItems: {
-  //     'melville-software-finance': request.body
-  //       .map((transaction) => {
-  //         return {
-  //           PutRequest: {
-  //             Item: {
-  //               'id': transaction.id,
-  //               'Date': transaction.Date,
-  //               'Reference': transaction.Reference,
-  //               'Transaction Type': transaction['Transaction Type'],
-  //               'Money In': transaction['Money In'],
-  //               'Money Out': transaction['Money Out'],
-  //               'Balance': transaction.Balance,
-  //             }
-  //           }
-  //         }
-  //       })
-  //   }
-  // };
+  // return {"request.body": request.body, "type": typeof request.body, request: request};
+  const params = {
+    RequestItems: {
+      'melville-software-finance': request.body
+        .map((transaction) => {
+          return {
+            PutRequest: {
+              Item: {
+                'id': transaction.id,
+                'Date': transaction.Date,
+                'Reference': transaction.Reference,
+                'Transaction Type': transaction['Transaction Type'],
+                'Money In': transaction['Money In'],
+                'Money Out': transaction['Money Out'],
+                'Balance': transaction.Balance,
+              }
+            }
+          }
+        })
+    }
+  };
 
-  // return dynamoDb.batchWrite(params).promise();
+  return dynamoDb.batchWrite(params).promise();
 }, { success: 201 });
 
 api.get('/transactions', function (request) {
@@ -43,21 +43,14 @@ api.put('/transaction', function (request) {
     },
     UpdateExpression: `set 
       id = :a,
-      name = :b,
-      description = :c,
-      date = :d,
-      in = :e,
-      out = :f,
-      category = :g,
+      hyperlink = :b,
+      category = :c,
+
     `,
     ExpressionAttributeValues: {
       ":a": request.body.id,
-      ":b": request.body.name,
-      ":c": request.body.description,
-      ":d": request.body.date,
-      ":e": request.body.in,
-      ":f": request.body.out,
-      ":g": request.body.category,
+      ":b": request.body.hyperlink,
+      ":c": request.body.category,
     }
   };
 

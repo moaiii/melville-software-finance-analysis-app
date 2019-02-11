@@ -1,0 +1,10 @@
+[
+  {
+    "path": "/transaction-list",
+    "component": "TransactionList"
+  },
+  {
+    "path": "/transaction-upload",
+    "component": "TransactionUpload"
+  }
+]

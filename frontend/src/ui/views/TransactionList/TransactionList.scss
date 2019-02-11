@@ -1,0 +1,15 @@
+.TransactionList {
+  // mobile first < 425px
+  max-width: 750px;
+  margin: 0 auto;
+
+  &.--animate {}
+
+  @media (min-width: 425px) {}
+
+  @media (min-width: 768px) {}
+
+  @media (min-width: 1024px) {}
+
+  @media (min-width: 1440px) {}
+}
