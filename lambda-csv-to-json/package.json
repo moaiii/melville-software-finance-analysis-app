@@ -1,0 +1,29 @@
+{
+  "name": "lambda-csv-to-json",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "watch": "nodemon npm run deploy",
+    "deploy": "sh ./scripts/deploy.sh; npm run upload-transaction",
+    "upload-transaction": "sh ./scripts/uploadTransaction.sh",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "aws-sdk": "^2.400.0",
+    "csvtojson": "^2.0.8",
+    "request": "^2.88.0"
+  },
+  "devDependencies": {
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.13.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-skyscanner": "^4.0.0",
+    "eslint-plugin-backpack": "^0.2.3",
+    "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-jsx-a11y": "^6.2.1",
+    "eslint-plugin-react": "^7.12.4"
+  }
+}

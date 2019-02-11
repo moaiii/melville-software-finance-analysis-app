@@ -1,0 +1,2 @@
+aws s3 rm s3://melville-software-finance-transactions/TransactionTest.csv --profile default
+aws s3 cp scripts/util/TransactionTest.csv s3://melville-software-finance-transactions/TransactionTest.csv --profile default

@@ -1,0 +1,17 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Action": [
+        "dynamodb:DeleteItem",
+        "dynamodb:BatchWrite",
+        "dynamodb:BatchWriteItem",
+        "dynamodb:GetItem",
+        "dynamodb:PutItem",
+        "dynamodb:Scan"
+      ],
+      "Effect": "Allow",
+      "Resource": "*"
+    }
+  ]
+}
