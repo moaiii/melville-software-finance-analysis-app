@@ -2,6 +2,10 @@
   "extends": "skyscanner",
   "rules": {
     "arrow-body-style": 0,
-    "no-param-reassign": 0
+    "no-param-reassign": 0,
+    "no-unused-vars": 1,
+    "import/prefer-default-export": 0,
+    "no-console": 0,
+    "operator-linebreak": 0
   }
 }

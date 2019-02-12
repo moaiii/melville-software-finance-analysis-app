@@ -1,25 +1,27 @@
 // @flow
 
-type State = {};
+type State = {
+  transactions: Array<Transaction>
+};
 
-let initialState = {
+const initialState = {
   transactions: [],
-  saveStatus: null
+  saveStatus: null,
 };
 
 export default (state: State = initialState, action): State => {
   switch (action.type) {
-    case "[TransactionList] GET_TRANSACTIONS__RESOLVED": {
+    case '[TransactionList] GET_TRANSACTIONS__RESOLVED': {
       return {
         ...state,
-        transactions: action.payload
+        transactions: action.payload,
       };
     }
-    
-    case "[TransactionList] SAVE_TRANSACTION__RESOLVED": {
+
+    case '[TransactionList] SAVE_TRANSACTION__RESOLVED': {
       return {
         ...state,
-        saveStatus: action.payload
+        saveStatus: action.payload,
       };
     }
 

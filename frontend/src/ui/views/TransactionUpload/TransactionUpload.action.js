@@ -1,5 +1,5 @@
 // @flow
-import {actionCreator, networkActionCreator} from "../../../lib/redux";
+import { actionCreator /* networkActionCreator */ } from '../../../lib/redux';
 
 export const exampleActionCreator
-  = actionCreator("[TransactionUpload] AN_EXAMPLE_ACTION_TYPE");
+  = actionCreator('[TransactionUpload] AN_EXAMPLE_ACTION_TYPE');
