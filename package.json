@@ -42,11 +42,5 @@
   "bugs": {
     "url": "https://github.com/moaiii/melville-software-finance-analysis-app/issues"
   },
-  "homepage": "https://github.com/moaiii/melville-software-finance-analysis-app#readme",
-  "husky": {
-    "hooks": {
-      "pre-commit": "eslint",
-      "pre-push": "npm run test"
-    }
-  }
+  "homepage": "https://github.com/moaiii/melville-software-finance-analysis-app#readme"
 }
