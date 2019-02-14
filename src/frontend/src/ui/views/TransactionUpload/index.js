@@ -1,13 +1,13 @@
+import TransactionUpload from './TransactionUpload';
 // @flow
 // import * as action from './TransactionUpload.action';
 import { connect } from 'react-redux';
 import store from '../../../db/store';
-import TransactionUpload from './TransactionUpload';
 import { uploadCSV } from './TransactionUpload.action';
 
 function mapStoreToProps(store) {
   return {
-    uploadStatus: store.TransactionUploadReducer.uploadStatus
+    // uploadStatus: store.TransactionUploadReducer.uploadStatus
   };
 }
 

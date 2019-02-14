@@ -1,7 +1,9 @@
 import { getTransactions, saveTransaction } from './TransactionList.action';
+
 import TransactionList from './TransactionList';
 import categories from '../../../lib/utils/constants/categories.json';
 import { connect } from 'react-redux';
+import store from '../../../db/store';
 
 function mapStoreToProps(store) {
   return {

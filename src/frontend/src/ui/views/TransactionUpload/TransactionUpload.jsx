@@ -1,13 +1,14 @@
 // @flow
 import * as React from "react";
+
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 
 type Props = {
-  uploadStatus: {
+  // /* uploadStatus */: {
 
-  },
+  // },
   uploadCSV: Function
 };
 type State = {};
@@ -17,7 +18,7 @@ export default class TransactionUpload extends React.Component<Props, State> {
     super();
 
     this.state = {
-      uploadStatus: this.props.uploadStatus
+      // /* uploadStatus */: this.props./* uploadStatus */
     };
   }
 
@@ -35,7 +36,7 @@ export default class TransactionUpload extends React.Component<Props, State> {
 
   render(): React.Element<"div"> {
 
-    const { uploadStatus } = this.props;
+    const { /* uploadStatus */ } = this.props;
     const { } = this.state;
 
     return (
