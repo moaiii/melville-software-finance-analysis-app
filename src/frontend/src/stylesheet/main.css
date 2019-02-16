@@ -1,4 +1,6 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat");
 * {
+  font-family: 'Montserrat', sans-serif !important;
   margin: 0;
   padding: 0;
   box-sizing: border-box; }
@@ -12,3 +14,20 @@ body {
 .TransactionList {
   max-width: 750px;
   margin: 0 auto; }
+
+.TransactionListFilters {
+  padding: 1rem 0; }
+
+.transaction-item-topline p:nth-of-type(1) {
+  width: 100px;
+  margin-right: 1rem; }
+
+.Menu {
+  margin-bottom: 1rem; }
+  .Menu .Menu__inner {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center; }
+  .Menu Header {
+    background-color: #222; }

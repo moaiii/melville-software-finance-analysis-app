@@ -17,11 +17,13 @@ export default class TransactionUpload extends React.Component<Props, State> {
     super();
 
     this.state = {
-      uploadStatus: this.props.uploadStatus
+      // uploadStatus: this.props.uploadStatus
     };
   }
 
-  // componentDidMount(): void {}
+  componentDidMount(): void {
+    this.props.uploadCSV();
+  }
 
   // shouldComponentUpdate(nextProps: Props, nextState: State): boolean {
   //   return true;
@@ -35,7 +37,7 @@ export default class TransactionUpload extends React.Component<Props, State> {
 
   render(): React.Element<"div"> {
 
-    const { uploadStatus } = this.props;
+    const { /* uploadStatus */ } = this.props;
     const { } = this.state;
 
     return (

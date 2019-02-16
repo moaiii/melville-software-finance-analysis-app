@@ -4,6 +4,10 @@
   "description": "Financial analysis software for IT contractors",
   "main": "index.js",
   "dependencies": {
+    "@date-io/date-fns": "^1.1.0",
+    "date-fns": "^2.0.0-alpha.21",
+    "material-ui-pickers": "^2.2.1",
+    "prop-types": "^15.7.2",
     "react": "^16.8.1",
     "react-dom": "^16.8.1",
     "react-redux": "^6.0.0",

@@ -6,8 +6,7 @@ const dynamoDb = new AWS.DynamoDB.DocumentClient();
 
 api.post(
   '/transactions',
-  function (request) {
-    // return {"request.body": request.body, "type": typeof request.body, request: request};
+  (request) => {
     const params = {
       RequestItems: {
         'melville-software-finance': request.body.map((transaction) => {
@@ -17,10 +16,12 @@ api.post(
                 id: transaction.id,
                 Date: transaction.Date,
                 Reference: transaction.Reference,
-                'Transaction Type': transaction['Transaction Type'],
-                'Money In': transaction['Money In'],
-                'Money Out': transaction['Money Out'],
+                type: transaction['Transaction Type'],
+                in: transaction['Money In'],
+                out: transaction['Money Out'],
                 Balance: transaction.Balance,
+                category: transaction.category,
+                receipt: transaction.receipt,
               },
             },
           };
@@ -33,7 +34,7 @@ api.post(
   { success: 201 },
 );
 
-api.get('/transactions', function (request) {
+api.get('/transactions', (request) => {
   return dynamoDb
     .scan({ TableName: 'melville-software-finance' })
     .promise()
@@ -48,13 +49,12 @@ api.put('/transaction', function (request) {
     },
     UpdateExpression: `set 
       id = :a,
-      hyperlink = :b,
+      receipt = :b,
       category = :c,
-
     `,
     ExpressionAttributeValues: {
       ':a': request.body.id,
-      ':b': request.body.hyperlink,
+      ':b': request.body.receipt,
       ':c': request.body.category,
     },
   };

@@ -1,5 +1,4 @@
 .TransactionList {
-  // mobile first < 425px
   max-width: 750px;
   margin: 0 auto;
 
@@ -12,4 +11,22 @@
   @media (min-width: 1024px) {}
 
   @media (min-width: 1440px) {}
+}
+
+.TransactionListFilters {
+  padding: 1rem 0;
+
+  .date-range {
+    
+    .date-range-form {
+
+    }
+  }
+}
+
+.transaction-item-topline {
+  p:nth-of-type(1) {
+    width: 100px;
+    margin-right: 1rem;
+  }
 }

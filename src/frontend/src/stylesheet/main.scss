@@ -1,4 +1,7 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
 * {
+  font-family: 'Montserrat', sans-serif !important;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -35,3 +38,4 @@ body {
 @import '../ui/views/Auth/Auth.scss';
 @import '../ui/views/TransactionList/TransactionList.scss';
 @import '../ui/views/TransactionUpload/TransactionUpload.scss';
+@import '../ui/global/Menu/Menu.scss';
