@@ -1,10 +1,11 @@
+import React from 'react';
 import { Route, HashRouter as Router } from 'react-router-dom';
-
 import Auth from '../ui/views/Auth';
 import Calendar from '../ui/views/Calendar';
-import React from 'react';
 import TransactionList from '../ui/views/TransactionList';
 import TransactionUpload from '../ui/views/TransactionUpload';
+import Invoices from '../ui/views/Invoices';
+import CreateInvoice from '../ui/views/CreateInvoice';
 import routes from './routes.json';
 
 export default (
@@ -14,6 +15,8 @@ export default (
       <Route path={'/calendar'} component={Calendar} />
       <Route path={'/transaction-list'} component={TransactionList} />
       <Route path={'/transaction-upload'} component={TransactionUpload} />
+      <Route path={'/invoices'} component={Invoices} />
+      <Route path={'/create-invoice'} component={CreateInvoice} />
     </div>
   </Router>
 );

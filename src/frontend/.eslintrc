@@ -6,6 +6,7 @@
     "no-unused-vars": 1,
     "import/prefer-default-export": 0,
     "no-console": 0,
-    "operator-linebreak": 0
+    "operator-linebreak": 0,
+    "react/jsx-closing-bracket-location": 0
   }
 }
