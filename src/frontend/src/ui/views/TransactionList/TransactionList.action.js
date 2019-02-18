@@ -1,5 +1,5 @@
 // @flow
-import { networkActionCreator } from '../../../lib/redux';
+import { networkActionCreator, actionCreator } from '../../../lib/redux';
 
 export const getTransactions = networkActionCreator(
   '[TransactionList] GET_TRANSACTIONS',
