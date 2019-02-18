@@ -1,11 +1,11 @@
 // @flow
-import * as React from "react";
-
+import * as React from 'react';
 import CheckIcon from '@material-ui/icons/Check';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Fab from '@material-ui/core/Fab';
 import SaveIcon from '@material-ui/icons/Save';
-import Transaction from './Transaction/Transaction.jsx';
+import TransactionListFilters from './Filters/TransactionListFilters.jsx';
+import TransactionItem from './Transaction/TransactionItem.jsx';
 
 type Props = {};
 type State = {};
@@ -25,47 +25,60 @@ export default class TransactionList extends React.Component<Props, State> {
     this.props.getTransactions();
   }
 
-  handleTransaction = (i) => {
-    this.setState({ expanded: i });
+  shouldComponentUpdate(nextProps) {
+    return !!nextProps.transactions;
   }
 
-  handleCategoryChange = (i, id) => {
-    // this.setState({ expanded: i });
+  handleTransactionSelect = (i) => {
+    this.setState({
+      expanded: this.state.expanded === i
+        ? -1
+        : i,
+    });
   }
 
   handleSave = () => {
-    this.props.saveTransaction();
-    this.setState({loading: true}, () => {
-      setTimeout(() => {
-        this.setState({ success: true, loading: false })
-      }, 2000);
-    })
+  }
+
+  updateTransaction = (params) => {
+    this.props.updateTransaction(params);
   }
 
   render(): React.Element<"div"> {
-    
-    const { transactions, categories } = this.props;
-    const { expanded, loading, success } = this.state;
+    const {
+      transactions,
+      categories,
+      filters,
+      setFilters,
+    } = this.props;
 
-    const _transactions = transactions
-      .map((transactionData, index) => {
+    const {
+      expanded,
+      loading,
+      success,
+    } = this.state;
+
+    const allTransactions = transactions
+      .map((transaction, index) => {
         return (
-          <Transaction 
+          <TransactionItem
+            key={`${index}-transaction-item`}
+            index={index}
+            transaction={transaction}
+            expanded={expanded === index}
             categories={categories}
-            transactionData={transactionData}
-            handleTransactionSelect={this.handleTransaction}
-            handleCategoryChange={this.handleCategoryChange}
-            expanded={true}
-            index={index} />
+            handleTransactionSelect={this.handleTransactionSelect}
+            updateTransaction={this.updateTransaction} />
         );
       });
 
     return (
-      <div className={`TransactionList`}>
-        <h1 onClick={() => this.props.history.push('/calendar')} >
-          Calendar
-        </h1>
-        {_transactions}
+      <div className={'TransactionList'}>
+        <h1>Transactions</h1>
+        <TransactionListFilters
+          filterState={filters}
+          setFilters={setFilters} />
+        {allTransactions}
         <div>
           <Fab color="primary" onClick={() => this.handleSave()}>
             {success ? <CheckIcon /> : <SaveIcon />}

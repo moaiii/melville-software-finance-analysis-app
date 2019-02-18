@@ -1,19 +1,26 @@
-// @flow
+// // @flow
+// import { createNetworkReducer, networkReducerInitialState } from '../../../lib/redux';
+// import {default as types} from './Transaction.types';
 
-type State = {};
+// const _fd = require('lodash.flattendeep');
 
-const initialState = {};
+// const additionalState = {};
+// const initialState = networkReducerInitialState(additionalState);
 
-export default (state: State = initialState, action): State => {
-  switch (action.type) {
-    case '[TransactionUpload] AN_EXAMPLE_ACTION_TYPE': {
-      return {
-        ...state,
-      };
-    }
+// export default (state = initialState, action) => {
+//   const { type, payload = {} } = action;
 
-    default: {
-      return state;
-    }
-  }
-};
+//   const functions = Object
+//     .values(types)
+//     .map(type => createNetworkReducer(type, payload));
+
+//   const reducerFunctions = {}
+
+//   functions.forEach(funct => {
+//     Object.assign(reducerFunctions, reducerFunctions, {
+//       ...funct
+//     });
+//   });
+
+//   return state
+// };
