@@ -1,0 +1,22 @@
+.Menu {
+  margin-bottom: 3rem;
+
+  .Menu__inner {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+  }
+
+  Header {
+    background-color: #222;
+  }
+
+  @media (min-width: 425px) {}
+
+  @media (min-width: 768px) {}
+
+  @media (min-width: 1024px) {}
+
+  @media (min-width: 1440px) {}
+}

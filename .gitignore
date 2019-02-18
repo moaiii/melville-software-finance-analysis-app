@@ -1,4 +1,5 @@
 node_modules
-src/api/node_modules
+src/db-api/node_modules
 src/lambda-csv-to-json/node_modules
 src/frontend/node_modules
+src/csv-upload-api/node_modules
