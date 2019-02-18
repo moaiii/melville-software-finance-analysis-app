@@ -24,6 +24,10 @@ export default class Auth extends React.Component<Props, State> {
   //   return true;
   // };
 
+  login = () => {
+    this.props.history.push('/transaction-list')
+  }
+
   render(): React.Element<"div"> {
     
     const { } = this.props;
@@ -56,7 +60,7 @@ export default class Auth extends React.Component<Props, State> {
                 />
               </div>
               <div className="button-container">
-                <Button variant="contained" className={``}>
+                <Button onClick={() => this.login()} variant="contained" className={``}>
                   Login
                 </Button>
                 <Button className={``}>

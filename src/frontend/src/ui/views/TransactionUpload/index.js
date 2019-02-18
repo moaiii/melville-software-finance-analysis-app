@@ -6,10 +6,7 @@ import { uploadCSV } from './TransactionUpload.action';
 
 function mapStoreToProps(store) {
   return {
-    pending: store.TransactionUploadReducer.pending,
-    complete: store.TransactionUploadReducer.complete,
-    error: store.TransactionUploadReducer.error,
-    message: store.TransactionUploadReducer.message,
+    // uploadStatus: store.TransactionUploadReducer.uploadStatus
   };
 }
 

@@ -11,6 +11,9 @@ button:hover, a:hover {
 body {
   filter: saturate(1.1); }
 
+.Calendar {
+  height: 500px; }
+
 .TransactionList {
   max-width: 750px;
   margin: 0 auto; }

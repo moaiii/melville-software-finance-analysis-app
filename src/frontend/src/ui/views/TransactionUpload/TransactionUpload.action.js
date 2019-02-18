@@ -1,6 +1,6 @@
 // @flow
-import { networkActionCreator } from '../../../lib/redux';
-import {default as types} from './Transaction.types';
+import { actionCreator } from '../../../lib/redux';
 
-export const uploadCSV = networkActionCreator(types.uploadCSV);
-export const somethingElse = networkActionCreator(types.somethingElse);
+export const uploadCSV = actionCreator(
+  '[TransactionUpload] UPLOAD_CV',
+);
