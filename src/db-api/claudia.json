@@ -1,0 +1,11 @@
+{
+  "lambda": {
+    "role": "melville-software-finance-api-executor",
+    "name": "melville-software-finance-api",
+    "region": "eu-west-1"
+  },
+  "api": {
+    "id": "nladp83tza",
+    "module": "index"
+  }
+}
