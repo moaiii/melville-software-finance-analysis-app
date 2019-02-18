@@ -40,7 +40,7 @@ export default (state: State = initialState, action): State => {
         ...state,
         transactions: {
           api: state.transactions.api,
-          display: action.payload,
+          display: action.payload.transactions,
         },
       };
     }

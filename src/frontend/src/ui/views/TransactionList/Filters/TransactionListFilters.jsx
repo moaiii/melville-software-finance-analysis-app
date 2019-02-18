@@ -12,7 +12,7 @@ import FavoriteBorder from '@material-ui/icons/FavoriteBorder';
 const TransactionListFilters = ({ filterState, setFilters }) => {
   const {
     receipt,
-    missingCategory,
+    category,
     dateRange,
     credits,
     debits,
@@ -29,6 +29,7 @@ const TransactionListFilters = ({ filterState, setFilters }) => {
               onChange={e => setFilters({
                 key: 'receipt',
                 value: e.target.checked,
+                middlewareMode: 'last',
               })}
               value={receipt}
               classes={{
@@ -42,12 +43,13 @@ const TransactionListFilters = ({ filterState, setFilters }) => {
         <FormControlLabel
           control={
             <Checkbox
-              checked={missingCategory}
+              checked={category}
               onChange={e => setFilters({
-                key: 'missingCategory',
+                key: 'category',
                 value: e.target.checked,
+                middlewareMode: 'last',
               })}
-              value={missingCategory}
+              value={category}
               classes={{
                 root: 'category-filter-root',
                 checked: 'category-filter-checked',
@@ -65,6 +67,7 @@ const TransactionListFilters = ({ filterState, setFilters }) => {
               onChange={e => setFilters({
                 key: 'credits',
                 value: e.target.checked,
+                middlewareMode: 'last',
               })}
               value={credits}
               classes={{
@@ -82,6 +85,7 @@ const TransactionListFilters = ({ filterState, setFilters }) => {
               onChange={e => setFilters({
                 key: 'debits',
                 value: e.target.checked,
+                middlewareMode: 'last',
               })}
               value={debits}
               classes={{
@@ -103,6 +107,7 @@ const TransactionListFilters = ({ filterState, setFilters }) => {
             onChange={e => setFilters({
               value: e.target.value,
               key: 'date-from',
+              middlewareMode: 'last',
             })}
             className={'date-from'}
             InputLabelProps={{
@@ -115,6 +120,7 @@ const TransactionListFilters = ({ filterState, setFilters }) => {
             onChange={e => setFilters({
               value: e.target.value,
               key: 'date-to',
+              middlewareMode: 'last',
             })}
             defaultValue={dateRange[1]}
             className={'date-to'}

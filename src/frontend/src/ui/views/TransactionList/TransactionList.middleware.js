@@ -17,33 +17,43 @@ export default {
     try {
       const res = await networkRequest(config);
       store.dispatch(getTransactions.resolved(res.data.Items));
-      store.dispatch(setDisplayedTransactions());
+      store.dispatch(setDisplayedTransactions({
+        middlewareMode: 'last',
+      }));
     } catch (error) {
       console.error('[APP ERROR] get transactions middleware', error);
       store.dispatch(getTransactions.rejected(error));
     }
   },
 
+
   '[TransactionList] SET_DISPLAYED_TRANSACTIONS': (store, next, action) => {
-    const { filters, transactions } = store.getState().TransactionListReducer;
-    const {
-      receipt,
-      missingCategory,
-      // dateRange,
-      credits,
-      debits,
-      valueRange,
-    } = filters;
+    debugger;
+    if (!action.payload.transactions) {
+      /**
+       * i.e. organise by the filters
+       */
+      const { filters, transactions } = store.getState().TransactionListReducer;
+      const {
+        receipt,
+        missingCategory,
+        // dateRange,
+        credits,
+        debits,
+        valueRange,
+      } = filters;
 
-    const filteredTransactions = transactions.api
-      .filter((t) => {
-        const isCredit = !!parseInt(t.in, 10);
-        const isDebit = !!parseInt(t.out, 10);
-        return isCredit === credits || isDebit === debits;
-      });
+      const filteredTransactions = transactions.api
+        .filter((t) => {
+          const isCredit = !!parseInt(t.in, 10);
+          const isDebit = !!parseInt(t.out, 10);
+          return isCredit === credits || isDebit === debits;
+        });
 
-    action.payload = filteredTransactions;
+      action.payload.transactions = filteredTransactions;
+    }
   },
+
 
   '[TransactionList] SAVE_TRANSACTION__SUBMIT': async (store, next, action) => {
     const config = {
@@ -64,6 +74,7 @@ export default {
       store.dispatch(saveTransaction.rejected(error));
     }
   },
+
 
   '[TransactionList] SET_FILTERS': (store, next, action) => {
     let { key, value } = action.payload;
@@ -89,8 +100,29 @@ export default {
 
     // re-assign payload with new data structure
     action.payload = newFilterState;
-
     // reorganise transactions displayed based on new filters set
-    store.dispatch(setDisplayedTransactions());
+    // store.dispatch(setDisplayedTransactions());
+  },
+
+
+  '[TransactionList] UPDATE_TRANSACTION': (store, next, action) => {
+    const { key, value, type } = action.payload;
+
+    const updatedTransactions = store
+      .getState().TransactionListReducer.transactions.display
+      .map((transaction) => {
+        if (transaction.id === key) {
+          return {
+            ...transaction,
+            [`${type}`]: value,
+          };
+        }
+        return transaction;
+      });
+
+    store.dispatch(setDisplayedTransactions({
+      transactions: updatedTransactions,
+      middlewareMode: 'last',
+    }));
   },
 };

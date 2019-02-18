@@ -12,7 +12,19 @@ import CloudUploadIcon from '@material-ui/icons/CloudUpload';
 import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
 import MoreIcon from '@material-ui/icons/MoreVert';
 
+import menuRestrictedUrls from '../../../lib/utils/constants/menu-restricted-urls.json';
+
 function PrimarySearchAppBar() {
+  /**
+   * Dont render on login for example
+   */
+  const pathIsRestricted = menuRestrictedUrls
+    .some(url => url === window.location.hash);
+
+  if (pathIsRestricted) {
+    return null;
+  }
+
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 

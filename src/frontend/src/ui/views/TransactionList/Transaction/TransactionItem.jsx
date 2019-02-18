@@ -31,6 +31,9 @@ const TransactionItem = ({
     ? `+ £${transaction.in}`
     : `- £${transaction.out}`;
 
+  const bulletpoint
+    = <div className={`transaction-item__bulletpoint --${isCredit ? 'credit' : 'debit'}`} />;
+
   return (
     <ExpansionPanel
       key={`${id}-transaction`}
@@ -39,10 +42,11 @@ const TransactionItem = ({
       <ExpansionPanelSummary
         className={'transaction-item-topline'}
         expandIcon={<ExpandMoreIcon />}>
+        {bulletpoint}
         <Typography>{moneyValue}</Typography>
         <Typography>{Reference}</Typography>
       </ExpansionPanelSummary>
-      <ExpansionPanelDetails>
+      <ExpansionPanelDetails className={'TransactionItem__bottom'}>
         <TextField
           value={receipt}
           id={`transaction-${id}-hyperlink`}
@@ -53,6 +57,8 @@ const TransactionItem = ({
           onChange={e => updateTransaction({
             key: id,
             value: e.target.value,
+            type: 'receipt',
+            middlewareMode: 'last',
           })}
           variant="outlined" />
         <FormControl>
@@ -64,6 +70,8 @@ const TransactionItem = ({
             onChange={e => updateTransaction({
               key: id,
               value: e.target.value,
+              type: 'category',
+              middlewareMode: 'last',
             })}
             inputProps={{
               name: 'category',

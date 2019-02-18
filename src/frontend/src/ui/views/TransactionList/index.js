@@ -1,5 +1,10 @@
 import { connect } from 'react-redux';
-import { getTransactions, saveTransaction, setFilters } from './TransactionList.action';
+import {
+  getTransactions,
+  saveTransaction,
+  setFilters,
+  updateTransaction,
+} from './TransactionList.action';
 import categories from '../../../lib/utils/constants/categories.json';
 import TransactionList from './TransactionList';
 
@@ -17,7 +22,7 @@ function mapDispatchToProps(dispatch) {
     getTransactions: () => dispatch(getTransactions.submit()),
     saveTransaction: () => dispatch(saveTransaction.submit()),
     setFilters: params => dispatch(setFilters(params)),
-    updateTransaction: transaction => dispatch(saveTransaction(transaction)),
+    updateTransaction: transaction => dispatch(updateTransaction(transaction)),
   };
 }
 
