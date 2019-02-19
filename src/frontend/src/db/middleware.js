@@ -1,3 +1,4 @@
+import ErrorMiddleware from './Global/Error/Error.middleware';
 import AuthMiddleware from '../ui/views/Auth/Auth.middleware';
 import CalendarMiddleware from '../ui/views/Calendar/Calendar.middleware';
 import TransactionListMiddleware from '../ui/views/TransactionList/TransactionList.middleware';
@@ -12,6 +13,7 @@ const middlewares = {
   ...CalendarMiddleware,
   ...InvoicesMiddleware,
   ...CreateInvoiceMiddleware,
+  ...ErrorMiddleware,
 };
 
 export default (store, next, action) => {

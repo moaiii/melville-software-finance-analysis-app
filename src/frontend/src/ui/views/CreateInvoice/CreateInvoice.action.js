@@ -1,5 +1,5 @@
 // @flow
-import { actionCreator } from '../../../lib/redux';
+import { actionCreator, networkActionCreator } from '../../../lib/redux';
 
 export const setInvoiceField
   = actionCreator('[CreateInvoice] SET_FIELD');
@@ -12,3 +12,6 @@ export const removeBillableItem
 
 export const setBillableItemField
   = actionCreator('[CreateInvoice] SET_BILLABLE_ITEM_FIELD');
+
+export const createInvoice
+  = networkActionCreator('[CreateInvoice] CREATE_INVOICE');

@@ -13,6 +13,7 @@ const initialState = {
     total: 0,
     recipientName: '',
     project: '',
+    addVat: false,
     vat: 0,
     id: '1',
     recipientAddress: '',
@@ -27,6 +28,11 @@ const initialState = {
     ],
     reference: '',
     paid: false,
+  },
+  network: {
+    pending: false,
+    resolved: false,
+    error: false,
   },
 };
 
@@ -71,6 +77,26 @@ export default (state: State = initialState, action): State => {
         fields: Object.assign({}, state.fields, {
           items: action.payload,
         }),
+      };
+    }
+    case '[CreateInvoice] CREATE_INVOICE__SUBMIT': {
+      return {
+        ...state,
+        network: {
+          pending: true,
+          resolved: false,
+          error: false,
+        },
+      };
+    }
+    case '[CreateInvoice] CREATE_INVOICE__RESOLVED': {
+      return {
+        ...state,
+        network: {
+          pending: false,
+          resolved: true,
+          error: false,
+        },
       };
     }
 

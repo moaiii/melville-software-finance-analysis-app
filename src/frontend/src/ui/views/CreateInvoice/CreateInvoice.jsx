@@ -20,18 +20,8 @@ export default class CreateInvoice extends React.Component<Props, State> {
     };
   }
 
-  handleIncrementBillableItems = () => {
-    this.setState({
-      billableItems: [
-        ...this.state.billableItems,
-        {
-          unitPrice: 0,
-          description: '',
-          quantity: 0,
-          totalPrice: 0,
-        },
-      ],
-    });
+  createInvoice = () => {
+    this.props.createInvoice();
   }
 
   componentDidCatch(error, errorInfo) {
@@ -146,6 +136,22 @@ export default class CreateInvoice extends React.Component<Props, State> {
               />
             }
             label="Paid" />
+          <FormControlLabel
+            control={
+              <Checkbox
+                checked={fields.addVat}
+                onChange={e => setInvoiceField({
+                  key: 'addVat',
+                  value: e.target.checked,
+                })}
+                value={fields.addVat}
+                classes={{
+                  root: 'credit-filter-root',
+                  checked: 'credit-filter-checked',
+                }}
+              />
+            }
+            label="Add Vat" />
           <div className="billiable-item-container">
             <p>Billable items</p>
             { billableItems }
@@ -182,7 +188,9 @@ export default class CreateInvoice extends React.Component<Props, State> {
                 shrink: true,
               }} />
           </form>
-          <Button color="primary">
+          <Button
+            color="primary"
+            onClick={() => this.createInvoice()}>
             Create invoice
           </Button>
         </div>

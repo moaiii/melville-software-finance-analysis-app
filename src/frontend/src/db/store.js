@@ -1,6 +1,7 @@
 import { applyMiddleware, createStore, combineReducers } from 'redux';
 import { createLogger } from 'redux-logger';
 import middlewareRouter from './middleware';
+import ErrorReducer from './Global/Error/Error.reducer';
 import AuthReducer from '../ui/views/Auth/Auth.reducer';
 import CalendarReducer from '../ui/views/Calendar/Calendar.reducer';
 import TransactionListReducer from '../ui/views/TransactionList/TransactionList.reducer';
@@ -15,6 +16,7 @@ const customMiddleWare = store => next => (action) => {
 
 // Combine Reducers
 const reducers = combineReducers({
+  ErrorReducer,
   AuthReducer,
   TransactionListReducer,
   TransactionUploadReducer,

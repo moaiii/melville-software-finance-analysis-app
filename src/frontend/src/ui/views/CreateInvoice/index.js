@@ -6,6 +6,7 @@ import {
   addBillableItem,
   removeBillableItem,
   setBillableItemField,
+  createInvoice,
 } from './CreateInvoice.action';
 import store from '../../../db/store';
 
@@ -21,6 +22,7 @@ function mapDispatchToProps(dispatch) {
     addBillableItem: () => dispatch(addBillableItem()),
     removeBillableItem: index => dispatch(removeBillableItem(index)),
     setBillableItemField: index => dispatch(setBillableItemField(index)),
+    createInvoice: () => dispatch(createInvoice.submit()),
   };
 }
 

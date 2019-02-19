@@ -78,6 +78,7 @@ api.post('/invoice', (request) => {
       vat: request.body.vat,
       total: request.body.total,
       project: request.body.project,
+      paid: request.body.paid,
     },
   };
 
