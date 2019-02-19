@@ -1,8 +1,5 @@
 // @flow
-const today = new Date();
-const monthRaw = today.getMonth() + 1;
-const month = monthRaw < 10 ? `0${monthRaw}` : monthRaw;
-const todayShort = `${today.getFullYear()}-${month}-${today.getDate()}`;
+import { getShortToday } from '../../../lib/utils';
 
 type State = {
   // transactions: Array<Transaction>,
@@ -17,7 +14,7 @@ const initialState = {
   filters: {
     receipt: false,
     missingCategory: false,
-    dateRange: ['2018-01-01', todayShort], // [from, to]
+    dateRange: ['2018-01-01', getShortToday()], // [from, to]
     credits: true,
     debits: true,
     valueRange: [0, 1000000], // [smallest, largest]

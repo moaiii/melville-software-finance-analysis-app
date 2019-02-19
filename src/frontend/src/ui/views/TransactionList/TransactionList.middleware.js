@@ -28,7 +28,6 @@ export default {
 
 
   '[TransactionList] SET_DISPLAYED_TRANSACTIONS': (store, next, action) => {
-    debugger;
     if (!action.payload.transactions) {
       /**
        * i.e. organise by the filters

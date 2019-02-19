@@ -10,6 +10,6 @@ export default (balance, date) => {
     throw new Error('Cant create hash ID - No date', date);
   }
 
-  const hashids = new Hashids();
-  return hashids.encode(balance + date);
+  const hashids = new Hashids(date);
+  return hashids.encode(parseInt(balance, 10), 100, 10, 1);
 };

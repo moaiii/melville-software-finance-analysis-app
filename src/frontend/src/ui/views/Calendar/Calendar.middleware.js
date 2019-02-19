@@ -16,7 +16,7 @@ export default {
         return {
           day: reverseDay,
           value: parseInt(transaction[`${viewMetric}`]),
-        }
+        };
       });
-  }
+  },
 };

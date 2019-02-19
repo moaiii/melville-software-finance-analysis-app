@@ -3,6 +3,7 @@ import CalendarMiddleware from '../ui/views/Calendar/Calendar.middleware';
 import TransactionListMiddleware from '../ui/views/TransactionList/TransactionList.middleware';
 import TransactionUploadMiddleware from '../ui/views/TransactionUpload/TransactionUpload.middleware';
 import InvoicesMiddleware from '../ui/views/Invoices/Invoices.middleware';
+import CreateInvoiceMiddleware from '../ui/views/CreateInvoice/CreateInvoice.middleware';
 
 const middlewares = {
   ...AuthMiddleware,
@@ -10,6 +11,7 @@ const middlewares = {
   ...TransactionUploadMiddleware,
   ...CalendarMiddleware,
   ...InvoicesMiddleware,
+  ...CreateInvoiceMiddleware,
 };
 
 export default (store, next, action) => {
