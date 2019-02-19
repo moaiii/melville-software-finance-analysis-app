@@ -57,6 +57,13 @@ body {
   padding: 3rem;
   box-shadow: 0 5px 13px -1px rgba(0, 0, 0, 0.1); }
 
+.create-invoice-button {
+  background-color: green !important;
+  max-width: 200px !important;
+  color: white !important;
+  margin: 0 auto;
+  padding: 1rem; }
+
 .Menu {
   margin-bottom: 3rem; }
   .Menu .Menu__inner {

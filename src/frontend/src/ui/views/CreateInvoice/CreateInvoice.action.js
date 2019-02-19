@@ -15,3 +15,9 @@ export const setBillableItemField
 
 export const createInvoice
   = networkActionCreator('[CreateInvoice] CREATE_INVOICE');
+
+export const getTotalPayable
+  = actionCreator('[CreateInvoice] GET_TOTAL_PAYABLE');
+
+export const setTotalPayable
+  = actionCreator('[CreateInvoice] SET_TOTAL_PAYABLE');

@@ -143,6 +143,7 @@ export default class CreateInvoice extends React.Component<Props, State> {
                 onChange={e => setInvoiceField({
                   key: 'addVat',
                   value: e.target.checked,
+                  middlewareMode: 'first',
                 })}
                 value={fields.addVat}
                 classes={{
@@ -188,8 +189,13 @@ export default class CreateInvoice extends React.Component<Props, State> {
                 shrink: true,
               }} />
           </form>
+          <div className={'totals'}>
+            <h1>Total: £{fields.total}</h1>
+            <h3>Vat: £{fields.vatAmount}</h3>
+          </div>
           <Button
             color="primary"
+            className={'create-invoice-button'}
             onClick={() => this.createInvoice()}>
             Create invoice
           </Button>

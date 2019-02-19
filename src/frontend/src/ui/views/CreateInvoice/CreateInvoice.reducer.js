@@ -15,6 +15,7 @@ const initialState = {
     project: '',
     addVat: false,
     vat: 0,
+    vatAmount: 0,
     id: '1',
     recipientAddress: '',
     recipientEmail: '',
@@ -43,6 +44,15 @@ export default (state: State = initialState, action): State => {
         ...state,
         fields: Object.assign({}, state.fields, {
           [`${action.payload.key}`]: action.payload.value,
+        }),
+      };
+    }
+    case '[CreateInvoice] SET_TOTAL_PAYABLE': {
+      return {
+        ...state,
+        fields: Object.assign({}, state.fields, {
+          total: action.payload.totalPayable || 0,
+          vatAmount: action.payload.vatAmount || 0,
         }),
       };
     }
