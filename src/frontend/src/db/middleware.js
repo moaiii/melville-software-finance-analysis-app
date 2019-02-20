@@ -5,6 +5,7 @@ import TransactionListMiddleware from '../ui/views/TransactionList/TransactionLi
 import TransactionUploadMiddleware from '../ui/views/TransactionUpload/TransactionUpload.middleware';
 import InvoicesMiddleware from '../ui/views/Invoices/Invoices.middleware';
 import CreateInvoiceMiddleware from '../ui/views/CreateInvoice/CreateInvoice.middleware';
+import ProfileMiddleware from '../ui/views/Profile/Profile.middleware';
 
 const middlewares = {
   ...AuthMiddleware,
@@ -14,6 +15,7 @@ const middlewares = {
   ...InvoicesMiddleware,
   ...CreateInvoiceMiddleware,
   ...ErrorMiddleware,
+  ...ProfileMiddleware,
 };
 
 export default (store, next, action) => {

@@ -24,6 +24,10 @@ export default class CreateInvoice extends React.Component<Props, State> {
     this.props.createInvoice();
   }
 
+  handleBackNavigation = () => {
+    this.props.history.push('/invoices');
+  }
+
   componentDidCatch(error, errorInfo) {
     this.setState({ error });
     Sentry.withScope((scope) => {
@@ -61,6 +65,13 @@ export default class CreateInvoice extends React.Component<Props, State> {
 
     return (
       <div className={'CreateInvoice'}>
+        <div className="navigation">
+          <Button
+            color="primary"
+            onClick={() => this.handleBackNavigation()}>
+            Back to all invoices
+          </Button>
+        </div>
         <h1>Create Invoice</h1>
         <div className="form">
           <TextField

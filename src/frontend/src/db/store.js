@@ -9,6 +9,8 @@ import TransactionUploadReducer from '../ui/views/TransactionUpload/TransactionU
 import InvoicesReducer from '../ui/views/Invoices/Invoices.reducer';
 import CreateInvoiceReducer from '../ui/views/CreateInvoice/CreateInvoice.reducer';
 import MenuReducer from '../ui/global/Menu/Menu.reducer';
+import ProfileReducer from '../ui/views/Profile/Profile.reducer';
+
 
 const customMiddleWare = store => next => (action) => {
   middlewareRouter(store, next, action);
@@ -24,6 +26,7 @@ const reducers = combineReducers({
   CalendarReducer,
   InvoicesReducer,
   CreateInvoiceReducer,
+  ProfileReducer,
 });
 
 const logger = createLogger({
@@ -31,6 +34,9 @@ const logger = createLogger({
   diff: true,
 });
 
-const store = createStore(reducers, applyMiddleware(customMiddleWare, logger));
+const store = createStore(
+  reducers,
+  applyMiddleware(customMiddleWare, logger),
+);
 
 export default store;

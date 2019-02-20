@@ -46,16 +46,22 @@ body {
     .TransactionItem__bottom div:nth-of-type(2) div:nth-of-type(1) {
       height: 70%; }
 
-.CreateInvoice .form {
-  display: flex;
-  flex-direction: column;
-  margin: 0.5rem 0;
-  max-width: 750px;
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  margin: 0 auto;
-  border-radius: 5px;
-  padding: 3rem;
-  box-shadow: 0 5px 13px -1px rgba(0, 0, 0, 0.1); }
+.CreateInvoice {
+  max-width: 900px;
+  margin: 0 auto; }
+  .CreateInvoice h1 {
+    margin-bottom: 2rem; }
+  .CreateInvoice .form {
+    display: flex;
+    flex-direction: column;
+    margin: 0.5rem 0;
+    max-width: 900px;
+    width: 100%;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    margin: 0 auto;
+    border-radius: 5px;
+    padding: 3rem;
+    box-shadow: 0 5px 13px -1px rgba(0, 0, 0, 0.1); }
 
 .create-invoice-button {
   background-color: green !important;
@@ -63,6 +69,41 @@ body {
   color: white !important;
   margin: 0 auto;
   padding: 1rem; }
+
+.Profile {
+  max-width: 900px;
+  margin: 0 auto; }
+
+.Profile__content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start; }
+
+.Profile__window-frame {
+  padding: 1rem;
+  width: 650px; }
+
+.SubSection h2 {
+  text-align: right; }
+
+.Subsection__container {
+  display: flex;
+  flex-direction: column;
+  align-content: flex-end; }
+
+.Profile__side-menu {
+  max-width: 250px;
+  height: 100%;
+  position: relative;
+  padding: 1rem; }
+  .Profile__side-menu:after {
+    content: '';
+    width: 1px;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.14);
+    position: absolute;
+    right: 0;
+    top: 0; }
 
 .Menu {
   margin-bottom: 3rem; }

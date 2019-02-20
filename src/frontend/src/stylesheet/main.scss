@@ -17,6 +17,8 @@ body {
   filter: saturate(1.1);
 }
 
+$max-content-width: 900px;
+
 @mixin laptop-large {
   @media (min-width: 1024px) {
     @content;
@@ -41,4 +43,5 @@ body {
 @import '../ui/views/TransactionUpload/TransactionUpload.scss';
 @import '../ui/views/Invoices/Invoices.scss';
 @import '../ui/views/CreateInvoice/CreateInvoice.scss';
+@import '../ui/views/Profile/Profile.scss';
 @import '../ui/global/Menu/Menu.scss';

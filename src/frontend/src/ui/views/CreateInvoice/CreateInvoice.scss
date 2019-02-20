@@ -1,9 +1,17 @@
 .CreateInvoice {
+  max-width: 900px;
+  margin: 0 auto;
+
+  h1 {
+    margin-bottom: 2rem;
+  }
+
   .form {
     display: flex;
     flex-direction: column;
     margin: 0.5rem 0;
-    max-width: 750px;
+    max-width: 900px;
+    width: 100%;
     border: 1px solid rgba(0,0,0,0.2);
     margin: 0 auto;
     border-radius: 5px;

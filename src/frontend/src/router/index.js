@@ -7,7 +7,8 @@ import TransactionList from '../ui/views/TransactionList';
 import TransactionUpload from '../ui/views/TransactionUpload';
 import Invoices from '../ui/views/Invoices';
 import CreateInvoice from '../ui/views/CreateInvoice';
-import routes from './routes.json';
+import Profile from '../ui/views/Profile';
+
 
 export default (
   <Router basename="/">
@@ -19,6 +20,7 @@ export default (
       <Route path={'/transaction-upload'} component={TransactionUpload} />
       <Route path={'/invoices'} component={Invoices} />
       <Route path={'/create-invoice'} component={CreateInvoice} />
+      <Route path={'/profile'} component={Profile} />
     </div>
   </Router>
 );
