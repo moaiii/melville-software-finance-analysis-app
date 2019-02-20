@@ -32,8 +32,8 @@ export default class Profile extends React.Component<Props, State> {
     this.setState({ selection });
   }
 
-  setFieldContent = ({ key, value, subSection }) => {
-    console.log(key, value, subSection);
+  setFieldContent = (config) => {
+    this.props.setFieldContent(config);
   }
 
   componentDidCatch(error, errorInfo) {
