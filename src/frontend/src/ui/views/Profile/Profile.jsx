@@ -23,11 +23,10 @@ export default class Profile extends React.Component<Props, State> {
     };
   }
 
-  // componentDidMount(): void {}
+  componentDidMount() {
+    this.props.getProfileContent();
+  }
 
-  // shouldComponentUpdate(nextProps: Props, nextState: State): boolean {
-  //   return true;
-  // };
   handleMenuSelection = (selection) => {
     this.setState({ selection });
   }
@@ -46,9 +45,8 @@ export default class Profile extends React.Component<Props, State> {
     });
   }
 
-
   render(): React.Element<"div"> {
-    const { fields } = this.props;
+    const { fields, addField, removeField } = this.props;
     const { selection } = this.state;
 
     return (
@@ -60,22 +58,32 @@ export default class Profile extends React.Component<Props, State> {
             handleMenuSelection={this.handleMenuSelection} />
           <div className="Profile__window-frame">
             <Address
+              addField={addField}
+              removeField={removeField}
               setFieldContent={this.setFieldContent}
               fields={fields.Address}
               isVisible={selection === 'Address'} />
             <Categories
+              addField={addField}
+              removeField={removeField}
               setFieldContent={this.setFieldContent}
               fields={fields.Categories}
               isVisible={selection === 'Categories'} />
             <Invoicing
+              addField={addField}
+              removeField={removeField}
               setFieldContent={this.setFieldContent}
               fields={fields.Invoicing}
               isVisible={selection === 'Invoicing'} />
             <People
+              addField={addField}
+              removeField={removeField}
               setFieldContent={this.setFieldContent}
               fields={fields.People}
               isVisible={selection === 'People'} />
             <Variables
+              addField={addField}
+              removeField={removeField}
               setFieldContent={this.setFieldContent}
               fields={fields.Variables}
               isVisible={selection === 'Variables'} />

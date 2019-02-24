@@ -1,61 +1,54 @@
 import React from 'react';
 import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
+import CancelIcon from '@material-ui/icons/Cancel';
 
-
-const People = ({ isVisible, setFieldContent, fields }) => {
+const People = ({
+  isVisible,
+  setFieldContent,
+  fields,
+  addField,
+  removeField
+}) => {
   if (isVisible) {
     return (
       <div className="SubSection --people">
         <h2>People</h2>
         <div className="Subsection__container --people">
-          <TextField
-            id="address-field-1"
-            label="Address line 1"
-            type="text"
-            value={fields.addressline1}
-            onChange={e => setFieldContent({
-              key: 'addressline1',
-              value: e.target.value,
-              middlewareMode: 'first',
-            })}
-            className={''}
-            margin="normal" />
-          <TextField
-            id="address-field-2"
-            label="Address line 2"
-            type="text"
-            value={fields.addressline2}
-            onChange={e => setFieldContent({
-              key: 'addressline2',
-              value: e.target.value,
-              middlewareMode: 'first',
-            })}
-            className={''}
-            margin="normal" />
-          <TextField
-            id="address-field-postcode"
-            label="Postcode"
-            type="text"
-            value={fields.postcode}
-            onChange={e => setFieldContent({
-              key: 'postcode',
-              value: e.target.value,
-              middlewareMode: 'first',
-            })}
-            className={''}
-            margin="normal" />
-          <TextField
-            id="address-field-phone"
-            label="Phone"
-            type="telephone"
-            value={fields.phone}
-            onChange={e => setFieldContent({
-              key: 'phone',
-              value: e.target.value,
-              middlewareMode: 'first',
-            })}
-            className={''}
-            margin="normal" />
+          {
+            fields.map((field, index) => {
+              return (
+                <div className="field">
+                  <TextField
+                    key={`${index}-people-field`}
+                    id={field.key}
+                    label={field.label}
+                    type={field.type}
+                    value={field.value}
+                    onChange={e => setFieldContent({
+                      key: field.key,
+                      value: e.target.value,
+                      middlewareMode: 'first',
+                    })}
+                    className={''}
+                    margin="normal" />
+                  <CancelIcon
+                    onClick={() => removeField({
+                      index,
+                      subCategory: 'People',
+                    })} />
+                </div>
+              );
+            })
+          }
+        </div>
+        <div className="button-container">
+          <Button
+            onClick={() => addField('People')}
+            variant="contained"
+            className={``}>
+            Add person
+          </Button>
         </div>
       </div>
     );

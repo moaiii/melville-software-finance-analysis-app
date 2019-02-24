@@ -15,9 +15,9 @@ const initialState = {
         key: '',
         label: '',
         value: '',
-        type: '',
+        type: 'text',
         meta: {},
-      }
+      },
     ],
     Invoicing: {
       comments: '',
@@ -32,7 +32,7 @@ const initialState = {
         value: '',
         type: '',
         meta: {},
-      }
+      },
     ],
     Variables: [
       {
@@ -41,7 +41,7 @@ const initialState = {
         value: '',
         type: '',
         meta: {},
-      }
+      },
     ],
   },
   network: {
@@ -70,7 +70,7 @@ export default (state: State = initialState, action): State => {
           pending: false,
           resolved: true,
           error: false,
-        }
+        },
       };
     }
     case '[Profile] GET_PROFILE_CONTENT__ERROR': {
@@ -80,48 +80,55 @@ export default (state: State = initialState, action): State => {
           pending: false,
           resolved: false,
           error: true,
-        }
+        },
       };
     }
-    case '[Profile] SET_PROFILE_CONTENT': { // TODO: both these reducer actions are the same
+    case '[Profile] SET_PROFILE_CONTENT': {
       return {
         ...state,
-        fields: action.payload,
+        fields: Object.assign({}, state.fields, {
+          Address: action.payload.Address,
+          Categories: action.payload.Categories,
+          People: action.payload.People,
+          Invoicing: action.payload.Invoicing,
+          Variables: action.payload.Variables,
+        }),
       };
     }
-    case '[Profile] SET_FIELD_CONTENT': { // TODO: both these reducer actions are the same
+    case '[Profile] SET_FIELD_CONTENT': {
       return {
         ...state,
         fields: action.payload,
       };
     }
     case '[Profile] ADD_FIELD': {
-      const { subCategory } = action.payload;
+      const subCategory = action.payload;
+
       return {
         ...state,
         fields: Object.assign({}, state.fields, {
           [`${subCategory}`]: [
             ...state.fields[`${subCategory}`],
             {
-              key: '',
+              key: `${state.fields[subCategory].length}-${subCategory}`,
               label: '',
               value: '',
-              type: '',
+              type: 'text',
               meta: {},
-            }
-          ]
-        })
+            },
+          ],
+        }),
       };
     }
-    case '[Profile] REMOVE_FIELD': {
+    case '[Profile] REMOVE_FIELD': { debugger;
       const { index, subCategory } = action.payload;
       return {
         ...state,
         fields: Object.assign({}, state.fields, {
           [`${action.payload.subCategory}`]: [
             ...state.fields[`${subCategory}`].slice(0, index),
-            ...state.fields[`${subCategory}`].slice(index + 1)]
-        })
+            ...state.fields[`${subCategory}`].slice(index + 1)],
+        }),
       };
     }
 

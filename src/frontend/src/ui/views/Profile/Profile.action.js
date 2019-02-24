@@ -2,7 +2,7 @@
 import { actionCreator, networkActionCreator } from '../../../lib/redux';
 
 export const getProfileContent
-  = networkActionCreator('[Profile] GET_PROFILE_CONTENT')
+  = networkActionCreator('[Profile] GET_PROFILE_CONTENT');
 
 export const setProfileContent
   = actionCreator('[Profile] SET_PROFILE_CONTENT');

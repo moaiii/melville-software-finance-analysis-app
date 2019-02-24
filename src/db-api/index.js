@@ -4,6 +4,7 @@ const AWS = require('aws-sdk');
 const api = new ApiBuilder();
 const dynamoDb = new AWS.DynamoDB.DocumentClient();
 
+
 api.post('/transactions', (request) => {
   const params = {
     RequestItems: {
@@ -31,12 +32,14 @@ api.post('/transactions', (request) => {
   success: 201,
 });
 
+
 api.get('/transactions', () => {
   return dynamoDb
     .scan({ TableName: 'melville-software-finance' })
     .promise()
     .then(response => response);
 });
+
 
 api.put('/transaction', (request) => {
   const params = {
@@ -61,6 +64,7 @@ api.put('/transaction', (request) => {
     .promise()
     .then(response => response);
 });
+
 
 api.post('/invoice', (request) => {
   const params = {
@@ -87,11 +91,38 @@ api.post('/invoice', (request) => {
   success: 201,
 });
 
+
 api.get('/invoices', () => {
   return dynamoDb
     .scan({ TableName: 'melville-software-finance-invoices' })
     .promise()
     .then(response => response);
+});
+
+
+api.get('/profile', () => {
+  return dynamoDb
+    .scan({ TableName: 'melville-software-finance-profile-config' })
+    .promise()
+    .then(response => response);
+});
+
+
+api.post('/profile', (request) => {
+  const params = {
+    TableName: 'melville-software-finance-profile-config',
+    Item: {
+      Address: request.body.Address,
+      Categories: request.body.Categories,
+      Invoicing: request.body.Invoicing,
+      People: request.body.People,
+      Variables: request.body.Variables,
+    },
+  };
+
+  return dynamoDb.put(params).promise();
+}, {
+  success: 201,
 });
 
 module.exports = api;
