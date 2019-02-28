@@ -1,18 +1,20 @@
 // @flow
 import { connect } from 'react-redux';
 import store from '../../../db/store';
-import Menu from './Menu.jsx';
-import { changeRoute } from './Menu.action';
+import Spinner from './Spinner.jsx';
+import * as action from './Spinner.action';
 
 function mapStoreToProps(store) {
   return {
-
+    isOpen: store.SpinnerReducer.isOpen,
+    title: store.SpinnerReducer.title,
+    subtitle: store.SpinnerReducer.subtitle,
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    changeRoute: route => dispatch(changeRoute(route)),
+
   };
 }
 
@@ -20,4 +22,4 @@ function mapDispatchToProps(dispatch) {
 export default connect(
   mapStoreToProps,
   mapDispatchToProps,
-)(Menu);
+)(Spinner);

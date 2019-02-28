@@ -9,6 +9,7 @@ import TransactionUploadReducer from '../ui/views/TransactionUpload/TransactionU
 import InvoicesReducer from '../ui/views/Invoices/Invoices.reducer';
 import CreateInvoiceReducer from '../ui/views/CreateInvoice/CreateInvoice.reducer';
 import MenuReducer from '../ui/global/Menu/Menu.reducer';
+import SpinnerReducer from '../ui/global/Spinner/Spinner.reducer';
 import ProfileReducer from '../ui/views/Profile/Profile.reducer';
 
 
@@ -23,6 +24,7 @@ const reducers = combineReducers({
   TransactionListReducer,
   TransactionUploadReducer,
   MenuReducer,
+  SpinnerReducer,
   CalendarReducer,
   InvoicesReducer,
   CreateInvoiceReducer,

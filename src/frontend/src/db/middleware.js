@@ -6,6 +6,8 @@ import TransactionUploadMiddleware from '../ui/views/TransactionUpload/Transacti
 import InvoicesMiddleware from '../ui/views/Invoices/Invoices.middleware';
 import CreateInvoiceMiddleware from '../ui/views/CreateInvoice/CreateInvoice.middleware';
 import ProfileMiddleware from '../ui/views/Profile/Profile.middleware';
+import MenuMiddleware from '../ui/global/Menu/Menu.middleware';
+import SpinnerMiddleware from '../ui/global/Spinner/Spinner.middleware';
 
 const middlewares = {
   ...AuthMiddleware,
@@ -16,6 +18,8 @@ const middlewares = {
   ...CreateInvoiceMiddleware,
   ...ErrorMiddleware,
   ...ProfileMiddleware,
+  ...MenuMiddleware,
+  ...SpinnerMiddleware,
 };
 
 export default (store, next, action) => {

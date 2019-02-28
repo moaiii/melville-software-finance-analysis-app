@@ -2,17 +2,13 @@
 
 type State = {};
 
-const initialState = {
-  currentRoute: '',
-  menuIsVisible: true,
-};
+let initialState = {};
 
 export default (state: State = initialState, action): State => {
   switch (action.type) {
-    case '[Menu] CHANGE_ROUTE': {
+    case "[Analytics] AN_EXAMPLE_ACTION_TYPE": {
       return {
         ...state,
-        currentRoute: action.payload,
       };
     }
 

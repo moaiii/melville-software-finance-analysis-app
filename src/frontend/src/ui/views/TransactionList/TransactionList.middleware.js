@@ -4,11 +4,17 @@ import {
   saveTransaction,
   setDisplayedTransactions,
 } from './TransactionList.action';
+import { openSpinner, closeSpinner } from '../../global/Spinner/Spinner.action';
 
 import { networkRequest } from '../../../lib/network';
 
 export default {
   '[TransactionList] GET_TRANSACTIONS__SUBMIT': async (store, next, action) => {
+    store.dispatch(openSpinner({
+      title: 'Getting your transactions',
+      subtitle: 'This may take a moment',
+    }));
+
     const config = {
       method: 'GET',
       url: `${process.env.REACT_APP_API_BASE_URL}/transactions`,
@@ -20,6 +26,7 @@ export default {
       store.dispatch(setDisplayedTransactions({
         middlewareMode: 'last',
       }));
+      store.dispatch(closeSpinner());
     } catch (error) {
       console.error('[APP ERROR] get transactions middleware', error);
       store.dispatch(getTransactions.rejected(error));

@@ -15,6 +15,7 @@ button, a {
 
 body {
   filter: saturate(1.1);
+  height: 100vh;
 }
 
 $max-content-width: 900px;
@@ -45,3 +46,4 @@ $max-content-width: 900px;
 @import '../ui/views/CreateInvoice/CreateInvoice.scss';
 @import '../ui/views/Profile/Profile.scss';
 @import '../ui/global/Menu/Menu.scss';
+@import '../ui/global/Spinner/Spinner.scss';

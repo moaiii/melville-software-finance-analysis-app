@@ -11,134 +11,84 @@ import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
 import CloudUploadIcon from '@material-ui/icons/CloudUpload';
 import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
 import MoreIcon from '@material-ui/icons/MoreVert';
+import history from '../../../router/history';
 
-import menuRestrictedUrls from '../../../lib/utils/constants/menu-restricted-urls.json';
+// import menuRestrictedUrls from '../../../lib/utils/constants/menu-restricted-urls.json';
 
-function PrimarySearchAppBar() {
-  /**
-   * Dont render on login for example
-   */
-  const pathIsRestricted = menuRestrictedUrls
-    .some(url => url === window.location.hash);
+export default class MenuBar extends React.Component {
+  constructor(props) {
+    super();
 
-  if (pathIsRestricted) {
-    return null;
+    this.state = {
+      isMenuOpen: false,
+    };
   }
 
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
-
-  const isMenuOpen = Boolean(anchorEl);
-  const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
-
-  function handleProfileMenuOpen(event) {
-    setAnchorEl(event.currentTarget);
+  componentDidMount() {
+    console.log(history);
   }
 
-  function handleMobileMenuClose() {
-    setMobileMoreAnchorEl(null);
+  handleChangeRoute = (route) => {
+    this.props.changeRoute(route);
   }
 
-  function handleMenuClose() {
-    setAnchorEl(null);
-    handleMobileMenuClose();
+  handleMobileMenuOpen = () => {
+    console.log('handleMobileMenuOpen');
   }
 
-  function handleMobileMenuOpen(event) {
-    setMobileMoreAnchorEl(event.currentTarget);
-  }
+  render() {
+    const { isMenuOpen } = this.state;
 
-  const renderMenu = (
-    <Menu
-      anchorEl={anchorEl}
-      anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
-      transformOrigin={{ vertical: 'top', horizontal: 'right' }}
-      open={isMenuOpen}
-      onClose={handleMenuClose}
-    >
-      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-      <MenuItem onClick={handleMenuClose}>Logout</MenuItem>
-    </Menu>
-  );
-
-  const renderMobileMenu = (
-    <Menu
-      anchorEl={mobileMoreAnchorEl}
-      anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
-      transformOrigin={{ vertical: 'top', horizontal: 'right' }}
-      open={isMobileMenuOpen}
-      onClose={handleMobileMenuClose}
-    >
-      <MenuItem>
-        <IconButton color="inherit">
-          <CalendarTodayIcon />
-        </IconButton>
-        <p>Calendar view</p>
-      </MenuItem>
-      <MenuItem>
-        <IconButton color="inherit">
-          <CloudUploadIcon />
-        </IconButton>
-        <p>Upload transactions</p>
-      </MenuItem>
-      <MenuItem>
-        <IconButton color="inherit">
-          <AttachMoneyIcon />
-        </IconButton>
-        <p>Graph</p>
-      </MenuItem>
-      <MenuItem onClick={handleProfileMenuOpen}>
-        <IconButton color="inherit">
-          <AccountCircle />
-        </IconButton>
-        <p>Profile</p>
-      </MenuItem>
-    </Menu>
-  );
-
-  return (
-    <div className={'Menu'}>
-      <AppBar position="static">
-        <Toolbar>
-          <div className="Menu__inner">
-            <IconButton className={'classes.menuButton'} color="inherit" aria-label="Open drawer">
-              <MenuIcon />
-            </IconButton>
-            <Typography className={'classes.title'} variant="h6" color="inherit" noWrap>
-              HyperMetro
-            </Typography>
-            <div className={'classes.grow'} />
-            <div className={'classes.sectionDesktop'}>
-              <IconButton color="inherit">
-                <CalendarTodayIcon />
-              </IconButton>
-              <IconButton color="inherit">
-                <CloudUploadIcon />
-              </IconButton>
-              <IconButton color="inherit">
-                <AttachMoneyIcon />
-              </IconButton>
-              <IconButton
-                aria-owns={isMenuOpen ? 'material-appbar' : undefined}
-                aria-haspopup="true"
-                onClick={handleProfileMenuOpen}
-                color="inherit"
-              >
-                <AccountCircle />
-              </IconButton>
+    return (
+      <div className={'Menu'}>
+        <AppBar position="static">
+          <Toolbar>
+            <div className="Menu__inner">
+              <Typography className={'classes.title'} variant="h6" color="inherit" noWrap>
+                HyperMetro
+              </Typography>
+              <div className={'classes.grow'} />
+              <div className={'classes.sectionDesktop'}>
+                <IconButton
+                  color="inherit"
+                  onClick={() => this.handleChangeRoute('/calendar')}>
+                  <CalendarTodayIcon />
+                </IconButton>
+                <IconButton
+                  color="inherit"
+                  onClick={() => this.handleChangeRoute('/transaction-upload')}>
+                  <CloudUploadIcon />
+                </IconButton>
+                <IconButton
+                  color="inherit"
+                  onClick={() => this.handleChangeRoute('/transaction-list')}>
+                  <AttachMoneyIcon />
+                </IconButton>
+                <IconButton
+                  aria-owns={isMenuOpen ? 'material-appbar' : undefined}
+                  aria-haspopup="true"
+                  onClick={() => this.handleChangeRoute('/profile')}
+                  color="inherit"
+                >
+                  <AccountCircle />
+                </IconButton>
+              </div>
             </div>
-            <div className={'classes.sectionMobile'}>
-              <IconButton aria-haspopup="true" onClick={handleMobileMenuOpen} color="inherit">
-                <MoreIcon />
-              </IconButton>
-            </div>
-          </div>
-        </Toolbar>
-      </AppBar>
-      {renderMenu}
-      {renderMobileMenu}
-    </div>
-  );
+          </Toolbar>
+        </AppBar>
+      </div>
+    );
+  }
 }
 
-export default PrimarySearchAppBar;
+    // const mobileDotsButton
+    //   = <div className={'classes.sectionMobile'}>
+    //       <IconButton aria-haspopup="true" onClick={this.handleMobileMenuOpen} color="inherit">
+    //         <MoreIcon />
+    //       </IconButton>
+    //     </div>
+
+    // const hamburgerButton
+    //   = <IconButton className={'classes.menuButton'} color="inherit" aria-label="Open drawer">
+    //       <MenuIcon />
+    //     </IconButton>
