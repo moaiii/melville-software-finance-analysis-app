@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from 'react';
 import { Route, HashRouter as Router } from 'react-router-dom';
 import Auth from '../ui/views/Auth';

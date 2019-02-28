@@ -17,7 +17,7 @@ export default {
     try {
       const res = await networkRequest(config);
       store.dispatch(getProfileContent.resolved(res.data.Items));
-      store.dispatch(setProfileContent(res.data.Items));
+      // store.dispatch(setProfileContent(res.data.Items));
     } catch (error) {
       console.error('[HYPER METRO] get profile middleware', error);
       store.dispatch(getProfileContent.rejected(error));
