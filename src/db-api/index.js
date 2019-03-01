@@ -47,7 +47,7 @@ api.put('/transaction', (request) => {
     Key: {
       id: request.body.id,
     },
-    UpdateExpression: `set 
+    UpdateExpression: `set
       id = :a,
       receipt = :b,
       category = :c,

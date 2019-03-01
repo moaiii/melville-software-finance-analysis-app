@@ -8,7 +8,6 @@ export default {
      * Log route here... ?
      */
     const route = action.payload;
-    console.log(action.payload);
     history.push(route);
   },
 };

@@ -3,14 +3,12 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
-import MenuItem from '@material-ui/core/MenuItem';
-import Menu from '@material-ui/core/Menu';
-import MenuIcon from '@material-ui/icons/Menu';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
 import CloudUploadIcon from '@material-ui/icons/CloudUpload';
 import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
-import MoreIcon from '@material-ui/icons/MoreVert';
+import ListIcon from '@material-ui/icons/List';
+import TrendingUpIcon from '@material-ui/icons/TrendingUp';
 import history from '../../../router/history';
 
 // import menuRestrictedUrls from '../../../lib/utils/constants/menu-restricted-urls.json';
@@ -24,16 +22,8 @@ export default class MenuBar extends React.Component {
     };
   }
 
-  componentDidMount() {
-    console.log(history);
-  }
-
   handleChangeRoute = (route) => {
     this.props.changeRoute(route);
-  }
-
-  handleMobileMenuOpen = () => {
-    console.log('handleMobileMenuOpen');
   }
 
   render() {
@@ -62,7 +52,17 @@ export default class MenuBar extends React.Component {
                 <IconButton
                   color="inherit"
                   onClick={() => this.handleChangeRoute('/transaction-list')}>
+                  <ListIcon />
+                </IconButton>
+                <IconButton
+                  color="inherit"
+                  onClick={() => this.handleChangeRoute('/invoices')}>
                   <AttachMoneyIcon />
+                </IconButton>
+                <IconButton
+                  color="inherit"
+                  onClick={() => this.handleChangeRoute('/analysis')}>
+                  <TrendingUpIcon />
                 </IconButton>
                 <IconButton
                   aria-owns={isMenuOpen ? 'material-appbar' : undefined}
@@ -80,15 +80,3 @@ export default class MenuBar extends React.Component {
     );
   }
 }
-
-    // const mobileDotsButton
-    //   = <div className={'classes.sectionMobile'}>
-    //       <IconButton aria-haspopup="true" onClick={this.handleMobileMenuOpen} color="inherit">
-    //         <MoreIcon />
-    //       </IconButton>
-    //     </div>
-
-    // const hamburgerButton
-    //   = <IconButton className={'classes.menuButton'} color="inherit" aria-label="Open drawer">
-    //       <MenuIcon />
-    //     </IconButton>
