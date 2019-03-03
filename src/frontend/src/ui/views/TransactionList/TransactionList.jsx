@@ -40,6 +40,10 @@ export default class TransactionList extends React.Component<Props, State> {
   handleSave = () => {
   }
 
+  handlePersonChange = () => {
+
+  }
+
   updateTransaction = (params) => {
     this.props.updateTransaction(params);
   }
@@ -67,6 +71,7 @@ export default class TransactionList extends React.Component<Props, State> {
             transaction={transaction}
             expanded={expanded === index}
             categories={categories}
+            handlePersonChange={this.handlePersonChange}
             handleTransactionSelect={this.handleTransactionSelect}
             updateTransaction={this.updateTransaction} />
         );
@@ -78,8 +83,10 @@ export default class TransactionList extends React.Component<Props, State> {
         <TransactionListFilters
           filterState={filters}
           setFilters={setFilters} />
-        {allTransactions}
-        <div>
+        <div className="TransactionList__transactions">
+          {allTransactions}
+        </div>
+        <div className={'TransactionList__save-button'}>
           <Fab color="primary" onClick={() => this.handleSave()}>
             {success ? <CheckIcon /> : <SaveIcon />}
           </Fab>

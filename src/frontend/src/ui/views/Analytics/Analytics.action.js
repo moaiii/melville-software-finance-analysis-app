@@ -1,5 +1,11 @@
 // @flow
-import {actionCreator, networkActionCreator} from "../../../lib/redux";
+import { actionCreator, networkActionCreator } from '../../../lib/redux';
 
-export const exampleActionCreator
-  = actionCreator("[Analytics] AN_EXAMPLE_ACTION_TYPE");
+export const setDateRange
+  = actionCreator('[Analytics] SET_DATE_RANGE');
+
+export const getFormattedGraphData
+  = actionCreator('[Analytics] GET_FORMATTED_GRAPH_DATA');
+
+export const setGraphData
+  = actionCreator('[Analytics] SET_GRAPH_DATA');

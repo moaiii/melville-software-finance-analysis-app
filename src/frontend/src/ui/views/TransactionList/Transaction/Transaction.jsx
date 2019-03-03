@@ -12,21 +12,22 @@ import Typography from '@material-ui/core/Typography';
 
 export default ({
   categories,
-  transactionData, 
-  handleTransactionSelect, 
-  handleCategoryChange, 
+  transactionData,
+  handleTransactionSelect,
+  handleCategoryChange,
+  handlePersonChange,
   expanded,
-  index
+  index,
 }) => {
   const { id, Reference } = transactionData;
-  const isCredit = !!parseInt(transactionData['Money In'].replace('£', ''));
+  const isCredit = !!parseInt(transactionData['Money In'].replace('£', ''), 10);
 
   const value = isCredit 
     ? `+ £${transactionData['Money In']}` 
     : `- £${transactionData['Money Out']}` ;
 
   return (
-    <ExpansionPanel 
+    <ExpansionPanel
       key={`${index}-${id}-transaction`}
       expanded={expanded} 
       onChange={() => handleTransactionSelect(index)}>
@@ -41,8 +42,33 @@ export default ({
           placeholder="Receipt hyperlink"
           className={`Transaction__hyperlink`}
           margin="normal"
-          variant="outlined"/>
+          variant="outlined" />
         <FormControl>
+          <InputLabel htmlFor={`person-${id}`}>
+            Person
+          </InputLabel>
+          <Select
+            value={''}
+            onChange={() => handlePersonChange(index, id)}
+            inputProps={{
+              name: 'person',
+              id: `person-${id}`,
+            }}>
+            <MenuItem value="">
+              <em>None</em>
+            </MenuItem>
+            {
+              people.map((person, i) => {
+                return (
+                  <MenuItem 
+                    key={`${i}-${id}-menu-item-person`}
+                    value={person}>
+                      {person}
+                  </MenuItem>
+                );
+              })
+            }
+          </Select>
           <InputLabel htmlFor={`category-${id}`}>
             Category
           </InputLabel>
@@ -72,4 +98,4 @@ export default ({
       </ExpansionPanelDetails>
     </ExpansionPanel>
   );
-}
+};

@@ -11,6 +11,7 @@ import CreateInvoiceReducer from '../ui/views/CreateInvoice/CreateInvoice.reduce
 import MenuReducer from '../ui/global/Menu/Menu.reducer';
 import SpinnerReducer from '../ui/global/Spinner/Spinner.reducer';
 import ProfileReducer from '../ui/views/Profile/Profile.reducer';
+import AnalyticsReducer from '../ui/views/Analytics/Analytics.reducer';
 
 
 const customMiddleWare = store => next => (action) => {
@@ -29,6 +30,7 @@ const reducers = combineReducers({
   InvoicesReducer,
   CreateInvoiceReducer,
   ProfileReducer,
+  AnalyticsReducer,
 });
 
 const logger = createLogger({

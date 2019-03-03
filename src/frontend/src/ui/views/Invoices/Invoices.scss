@@ -1,5 +1,7 @@
 .Invoices {
-  // mobile first < 425px
+  min-height: 100vh;
+  max-width: 900px;
+  margin: 0 auto;
 
   &.--animate {}
 
@@ -10,4 +12,45 @@
   @media (min-width: 1024px) {}
 
   @media (min-width: 1440px) {}
+}
+
+.Invoice__panel {
+  > div {
+    display: flex;
+    flex-direction: column !important;
+  }
+}
+
+.Invoice__tray {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  .lhs, .rhs {
+    width: 50%;
+    justify-content: flex-start;
+    align-content: flex-start;
+    display: flex;
+    flex-direction: column;
+  }
+
+  span {
+    margin: 0.5rem 0;
+  }
+}
+
+.Invoice__header {
+  margin: 2rem 0;
+
+  button {
+    box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.2), 0px 2px 2px 0px rgba(0,0,0,0.14), 0px 3px 1px -2px rgba(0,0,0,0.12);
+    color: #fff;
+    background-color: #2196f3;
+    border: 1px solid #2196f3;
+    
+    &:hover {
+    background-color: #fff;
+    color: #2196f3;
+    }
+  }
 }

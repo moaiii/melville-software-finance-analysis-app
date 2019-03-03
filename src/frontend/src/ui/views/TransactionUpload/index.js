@@ -1,6 +1,5 @@
-import TransactionUpload from './TransactionUpload';
-// @flow
 import { connect } from 'react-redux';
+import TransactionUpload from './TransactionUpload';
 import store from '../../../db/store';
 import { uploadCSV } from './TransactionUpload.action';
 
@@ -10,9 +9,9 @@ function mapStoreToProps(store) {
   };
 }
 
-function mapDispatchToProps(/* dispatch */) {
+function mapDispatchToProps(dispatch) {
   return {
-    uploadCSV: (csvFiles) => dispatchEvent(uploadCSV.submit(csvFiles))
+    uploadCSV: csvFiles => dispatch(uploadCSV.submit(csvFiles)),
   };
 }
 

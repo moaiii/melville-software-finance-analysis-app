@@ -1,11 +1,5 @@
-.Analytics {
-  min-height: 100vh;
-  max-width: 900px;
-  margin: 0 auto;
-
-  .Graph__container {
-    height: 400px;
-  }
+.DateRange {
+  // mobile first < 425px
 
   &.--animate {}
 
@@ -16,4 +10,4 @@
   @media (min-width: 1024px) {}
 
   @media (min-width: 1440px) {}
-}
+}undefined

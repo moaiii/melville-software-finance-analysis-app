@@ -61,7 +61,7 @@ export default class MenuBar extends React.Component {
                 </IconButton>
                 <IconButton
                   color="inherit"
-                  onClick={() => this.handleChangeRoute('/analysis')}>
+                  onClick={() => this.handleChangeRoute('/analytics')}>
                   <TrendingUpIcon />
                 </IconButton>
                 <IconButton

@@ -2,18 +2,22 @@
 import {connect} from 'react-redux';
 import store from '../../../db/store';
 import Analytics from './Analytics.jsx';
-import * as action from './Analytics.action';
+import {
+  setDateRange,
+  getFormattedGraphData,
+} from './Analytics.action';
 
-function mapStoreToProps( store ) {
+function mapStoreToProps(store) {
   return {
-
-  }
+    ...store.AnalyticsReducer,
+  };
 }
- 
-function mapDispatchToProps( dispatch ) {
-  return {
 
-  }
+function mapDispatchToProps(dispatch) {
+  return {
+    setDateRange: config => dispatch(setDateRange(config)),
+    getFormattedGraphData: config => dispatch(getFormattedGraphData(config)),
+  };
 }
 
 

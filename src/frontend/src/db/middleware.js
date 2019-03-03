@@ -8,6 +8,7 @@ import CreateInvoiceMiddleware from '../ui/views/CreateInvoice/CreateInvoice.mid
 import ProfileMiddleware from '../ui/views/Profile/Profile.middleware';
 import MenuMiddleware from '../ui/global/Menu/Menu.middleware';
 import SpinnerMiddleware from '../ui/global/Spinner/Spinner.middleware';
+import AnalyticsMiddleware from '../ui/views/Analytics/Analytics.middleware';
 
 const middlewares = {
   ...AuthMiddleware,
@@ -20,6 +21,7 @@ const middlewares = {
   ...ProfileMiddleware,
   ...MenuMiddleware,
   ...SpinnerMiddleware,
+  ...AnalyticsMiddleware,
 };
 
 export default (store, next, action) => {
