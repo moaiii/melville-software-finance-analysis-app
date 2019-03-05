@@ -1,0 +1,72 @@
+{
+  "2018-2019": {
+    "salary": {
+      "allowance": {
+        "amount": {
+          "from": 0,
+          "to": 8424
+        },
+        "nic": 0,
+        "tax": 0.0
+      },
+      "basic": {
+        "amount": {
+          "from": 8425,
+          "to": 46350
+        },
+        "nic": 0,
+        "tax": 0.20
+      },
+      "higher": {
+        "amount": {
+          "from": 46351,
+          "to": 150000
+        },
+        "nic": 0,
+        "tax": 0.40
+      },
+      "additional": {
+        "amount": {
+          "from": 150001,
+          "to": 100000000
+        },
+        "nic": 0,
+        "tax": 0.45
+      }
+    },
+    "dividend": {
+      "allowance": {
+        "amount": {
+          "from": 0,
+          "to": 2000
+        },
+        "nic": 0,
+        "tax": 0.0
+      },
+      "basic": {
+        "amount": {
+          "from": 2001,
+          "to": 34500
+        },
+        "nic": 0,
+        "tax": 0.075
+      },
+      "higher": {
+        "amount": {
+          "from": 34501,
+          "to": 150000
+        },
+        "nic": 0,
+        "tax": 0.325
+      },
+      "additional": {
+        "amount": {
+          "from": 150000,
+          "to": 100000000
+        },
+        "nic": 0,
+        "tax": 0.381
+      }
+    }
+  }
+}
