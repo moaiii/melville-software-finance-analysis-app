@@ -41,12 +41,12 @@ const calculateBands = (income, rateType, taxYear) => {
       return {
         band: bandNames[index],
         taxRate: rate.tax,
-        taxable: range < 0 ? 0 : range,
-        tax: range > 0 ? range * rate.tax : 0,
+        type: rateType,
+        taxable: range < 0 || !range ? 0 : range,
+        tax: range > 0 ? Math.ceil(range * rate.tax) : 0,
       };
     });
 
-  console.log('taxBands', taxBands);
   return taxBands;
 };
 
@@ -78,16 +78,32 @@ const calculateDividendTax = (dividendIncome, taxYear) => {
  * @param {string} taxYear tax year april to april
  * @returns {Object<string | number>} taxBands
  */
-const totalTax = (totalIncome, taxYear) => {
+const calculateTotalTax = (totalIncome, taxYear) => {
   checkForErrors(totalIncome, taxYear);
-  const salaryCap = incomeRates[taxYear].salary.allowance.to;
+  const salaryCap = incomeRates[taxYear].salary.allowance.amount.to;
   const salaryTax = calculateSalaryTax(salaryCap, taxYear);
   const dividendTax = calculateDividendTax(totalIncome - salaryCap, taxYear);
+
+  const totalTaxBands = [
+    ...salaryTax,
+    ...dividendTax,
+  ];
+
+  const totalTaxAmount = totalTaxBands
+    .reduce((acc, cur) => cur.tax + acc, 0);
+  console.log({
+    taxBands: [...totalTaxBands],
+    totalTaxAmount,
+  });
+  return {
+    taxBands: [...totalTaxBands],
+    totalTaxAmount,
+  };
 };
 
 
 export default {
   calculateSalaryTax,
   calculateDividendTax,
-  totalTax,
+  calculateTotalTax,
 };
