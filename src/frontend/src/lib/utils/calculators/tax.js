@@ -91,10 +91,7 @@ const calculateTotalTax = (totalIncome, taxYear) => {
 
   const totalTaxAmount = totalTaxBands
     .reduce((acc, cur) => cur.tax + acc, 0);
-  console.log({
-    taxBands: [...totalTaxBands],
-    totalTaxAmount,
-  });
+
   return {
     taxBands: [...totalTaxBands],
     totalTaxAmount,
