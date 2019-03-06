@@ -22,11 +22,10 @@ const checkForErrors = (amount, taxYear) => {
  */
 const calculateBands = (income, rateType, taxYear) => {
   const bands = incomeRates[taxYear][rateType];
-  const bandNames = Object.keys(bands);
 
   const taxBands = Object
     .values(bands)
-    .map((rate, index) => {
+    .map((rate) => {
       let range;
       const { from, to } = rate.amount;
 
@@ -79,18 +78,15 @@ const calculateDividendTax = (dividendIncome, taxYear) => {
 /**
  * @param {number} totalIncome monies to be taxed
  * @param {string} taxYear tax year april to april
+ * @param {?number} salaryCapInput salary cap from user input, optional
  * @returns {Object<string | number>} taxBands
  */
-const calculateTotalTax = (totalIncome, taxYear) => {
+const calculateTotalTax = (totalIncome, taxYear, salaryCapInput) => {
   checkForErrors(totalIncome, taxYear);
-  const salaryCap = incomeRates[taxYear].salary.allowance.amount.to;
+  // const salaryCap = salaryCapInput || incomeRates[taxYear].salary.allowance.amount.to;
+  const salaryCap = 20000;
   const salaryTax = calculateSalaryTax(salaryCap, taxYear);
   const dividendTax = calculateDividendTax(totalIncome - salaryCap, taxYear);
-
-  const totalTaxBands = {
-    ...salaryTax,
-    ...dividendTax,
-  };
 
   const totalDividendTax = Object.values(dividendTax)
     .reduce((acc, cur) => cur.tax + acc, 0);
@@ -100,9 +96,8 @@ const calculateTotalTax = (totalIncome, taxYear) => {
 
   const totalTaxAmount = totalDividendTax + totalSalaryTax;
 
-  console.log('totalTaxAmount', totalTaxAmount);
-
   return {
+    totalIncome,
     salaryTax,
     totalSalaryTax,
     dividendTax,

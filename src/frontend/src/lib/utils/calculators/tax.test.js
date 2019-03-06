@@ -9,6 +9,11 @@ describe('Calculates salary tax rates', () => {
       });
   });
   it('returns tax in the basic band and zero in all others', () => {
+    const salaryTax = taxRates.calculateSalaryTax(10000, '2018-2019');
+    console.log('salaryTax', salaryTax);
+    expect(salaryTax.allowance.tax).toEqual(0);
+  });
+  it('returns tax in the basic band and zero in all others', () => {
     const taxBands = taxRates.calculateSalaryTax(20000, '2018-2019');
     expect(taxBands.allowance.tax).toEqual(0);
     expect(taxBands.basic.tax).toBeGreaterThan(1);

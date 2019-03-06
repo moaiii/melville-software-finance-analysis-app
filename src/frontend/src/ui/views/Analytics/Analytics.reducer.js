@@ -1,15 +1,14 @@
 // @flow
 import { getShortToday } from '../../../lib/utils';
 
-type State = {};
-
 const initialState = {
   dateRange: ['2018-01-01', getShortToday()], // [from, to]
   graphData: null,
   graphKeys: [],
+  basicSalaryCap: 8424,
 };
 
-export default (state: State = initialState, action): State => {
+export default (state = initialState, action) => {
   switch (action.type) {
     case '[Analytics] SET_DATE_RANGE': {
       return {
@@ -23,6 +22,13 @@ export default (state: State = initialState, action): State => {
         ...state,
         graphData: action.payload.data,
         graphKeys: action.payload.keys,
+      };
+    }
+
+    case '[Analytics] SET_BASIC_SALARY_CAP': {
+      return {
+        ...state,
+        basicSalaryCap: action.payload.basicSalaryCap,
       };
     }
 

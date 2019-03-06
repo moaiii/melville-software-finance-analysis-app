@@ -9,3 +9,6 @@ export const getFormattedGraphData
 
 export const setGraphData
   = actionCreator('[Analytics] SET_GRAPH_DATA');
+
+export const setBasicSalaryCap
+  = actionCreator('[Analytics] SET_BASIC_SALARY_CAP');
