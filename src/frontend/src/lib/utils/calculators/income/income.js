@@ -13,7 +13,9 @@ const getIncome = (transactions, rangeType = 'month') => {
       && parseInt(transaction.in, 10) > 0);
 
   /** @type {Array<string: Object>} */
-  const transactionsGroupedByRangeType = groupByDate(incomeTransactions, rangeType, 'name');
+  const transactionsGroupedByRangeType = groupByDate(
+    incomeTransactions, rangeType, 'name',
+  );
 
   /** @type {Array<string>} */
   const dateKeys = Object
