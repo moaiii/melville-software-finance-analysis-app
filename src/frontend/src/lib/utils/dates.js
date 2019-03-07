@@ -31,6 +31,11 @@ export const addDays = (startDate, days) => {
   return reverseMonthDay(reverseDate(future.replace(/\//g, '-')));
 };
 
+
+/**
+ * @param {*} num
+ * @returns {}
+ */
 export const getMonthName = (num) => {
   return [
     'Jan',
@@ -48,7 +53,30 @@ export const getMonthName = (num) => {
 };
 
 
-export const groupByDate = (list, range) => {
+/**
+ * @param {*} dateObj
+ * @returns {}
+ */
+export const changeKeysFromNumbersToMonthNames = (dateObj) => {
+  const numKeys = Object.keys(dateObj);
+  const newObj = {};
+
+  numKeys.forEach((key, index) => {
+    const monthName = getMonthName(key);
+    newObj[monthName] = dateObj[numKeys[index]];
+  });
+
+  return newObj;
+};
+
+
+/**
+ * @param {*} list
+ * @param {*} range
+ * @param {*} keyType
+ * @returns {}
+ */
+export const groupByDate = (list, range, keyType = 'number') => {
   const listWithDateType = list.map((item) => {
     return {
       ...item,
@@ -58,5 +86,11 @@ export const groupByDate = (list, range) => {
     };
   });
 
-  return groupBy(listWithDateType, `${range}`);
+  const grouped = groupBy(listWithDateType, `${range}`);
+
+  if (keyType === 'name' && range === 'month') {
+    return changeKeysFromNumbersToMonthNames(grouped);
+  }
+
+  return grouped;
 };
