@@ -1,6 +1,29 @@
 import people from '../../constants/people.json';
 import tax from '../tax';
 
+
+/**
+ * @example object returned
+ *
+ * {
+      chris: {
+        dividend: number,
+        salary: number,
+        tax: number
+        grossEarnings: number,
+        netEarnings: number,
+      },
+      magda: {
+        dividend: number,
+        salary: number,
+        tax: number
+        grossEarnings: number,
+        netEarnings: number,
+      }
+    }
+ * @param {Array<Object>} transactions list of transactions from the api
+ * @returns {Object<string, number>} earnings per person
+ */
 const earningsPerPerson = (transactions) => {
   const earningsPaymentsFromBusiness = transactions
     .filter(transaction => transaction.category === 'dividend' || transaction.category === 'salary');
