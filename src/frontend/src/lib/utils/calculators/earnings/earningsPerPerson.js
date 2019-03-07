@@ -1,10 +1,7 @@
-import store from '../../../../db/store';
 import people from '../../constants/people.json';
 import tax from '../tax';
 
-const earningsPerPerson = () => {
-  const transactions = store.getState().TransactionListReducer.transactions.display;
-
+const earningsPerPerson = (transactions) => {
   const earningsPaymentsFromBusiness = transactions
     .filter(transaction => transaction.category === 'dividend' || transaction.category === 'salary');
 
@@ -34,7 +31,7 @@ const earningsPerPerson = () => {
         grossEarnings,
         netEarnings,
       }
-    })
+    });
 
   let obj = {};
 
