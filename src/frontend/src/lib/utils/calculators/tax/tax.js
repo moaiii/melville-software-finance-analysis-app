@@ -1,4 +1,4 @@
-import incomeRates from '../constants/income-thresholds.json';
+import incomeRates from '../../constants/income-thresholds.json';
 
 
 const checkForErrors = (amount, taxYear) => {
