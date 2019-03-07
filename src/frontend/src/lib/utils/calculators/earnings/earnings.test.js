@@ -49,6 +49,15 @@ describe('Earnings per person utility functions', () => {
     });
   });
 
+  it('each person should have a pension value >= 0', () => {
+    _people.forEach((person) => {
+      const { pension } = earningsData[person];
+
+      expect(pension).toBeTruthy();
+      expect(pension).toBeGreaterThanOrEqual(0);
+    });
+  });
+
   it('each person should have a tax value less than (salary + dividend)', () => {
     _people.forEach((person) => {
       const { tax } = earningsData[person];
