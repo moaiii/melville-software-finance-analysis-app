@@ -83,8 +83,7 @@ const calculateDividendTax = (dividendIncome, taxYear) => {
  */
 const calculateTotalTax = (totalIncome, taxYear, salaryCapInput) => {
   checkForErrors(totalIncome, taxYear);
-  // const salaryCap = salaryCapInput || incomeRates[taxYear].salary.allowance.amount.to;
-  const salaryCap = 20000;
+  const salaryCap = salaryCapInput || incomeRates[taxYear].salary.allowance.amount.to;
   const salaryTax = calculateSalaryTax(salaryCap, taxYear);
   const dividendTax = calculateDividendTax(totalIncome - salaryCap, taxYear);
 

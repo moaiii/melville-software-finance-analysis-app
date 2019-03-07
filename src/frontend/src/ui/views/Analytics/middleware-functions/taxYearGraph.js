@@ -1,5 +1,5 @@
 import store from '../../../../db/store';
-import tax from '../../../../lib/utils/calculators/tax';
+import tax from '../../../../lib/utils/calculators/tax/tax';
 import {
   graphColors,
 } from '../../../../lib/utils';
