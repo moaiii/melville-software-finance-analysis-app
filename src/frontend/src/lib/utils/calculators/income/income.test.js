@@ -13,7 +13,7 @@ import transactions from '../../../mocks/transactions.json';
  *    income: [
  *      {}, {}
  *    ]
-*    total: number
+ *   total: number
  */
 
 const _incomeByMonth = getIncome(transactions, 'month');

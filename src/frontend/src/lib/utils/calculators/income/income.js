@@ -2,9 +2,9 @@ import { groupByDate } from '../../dates';
 
 
 /**
- * @param {Array<Object>} transactions
- * @param {string} rangeType
- * @returns {Array<Object>}
+ * @param {Array<Object>} transactions list of all bank statements
+ * @param {string} rangeType month | year | quarter
+ * @returns {Array<Object>} an object of key value pairs
  */
 const getIncome = (transactions, rangeType = 'month') => {
   /** @type {Array<Object>} */
@@ -13,15 +13,15 @@ const getIncome = (transactions, rangeType = 'month') => {
       && parseInt(transaction.in, 10) > 0);
 
   /** @type {Array<string: Object>} */
-  const transactionsGroupedByMonth = groupByDate(incomeTransactions, rangeType, 'name');
+  const transactionsGroupedByRangeType = groupByDate(incomeTransactions, rangeType, 'name');
 
   /** @type {Array<string>} */
   const dateKeys = Object
-    .keys(transactionsGroupedByMonth); // month or just number
+    .keys(transactionsGroupedByRangeType); // month or just number
 
   /** @type {Array<Object>} */
   const incomeTransactionsArray = Object
-    .values(transactionsGroupedByMonth);
+    .values(transactionsGroupedByRangeType);
 
   /** @type {Array<number>} */
   const totalsByRange = incomeTransactionsArray
