@@ -1,5 +1,7 @@
-import tax from './tax';
+import personalTax from './personalTax';
+import corporationTax from './corporationTax';
 
 export default {
-  tax,
+  personalTax,
+  corporationTax,
 };

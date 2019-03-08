@@ -13,15 +13,10 @@ export default (state: State = initialState, action): State => {
     case '[DateRangeToast] OPEN_DATE_RANGE_TOAST': {
       return {
         ...state,
-        isOpen: true,
+        isOpen: !state.isOpen,
       };
     }
-    case '[DateRangeToast] CLOSE_DATE_RANGE_TOAST': {
-      return {
-        ...state,
-        isOpen: false,
-      };
-    }
+
     case '[DateRangeToast] SET_DATE_RANGE': {
       return {
         ...state,

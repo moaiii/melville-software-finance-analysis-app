@@ -26,7 +26,7 @@ export const reverseMonthDay = (date) => {
 };
 
 export const addDays = (startDate, days) => {
-  const currentDate = moment(startDate);
+  const currentDate = moment(startDate, 'YYYY/MM/DD');
   const future = moment(currentDate).add(days, 'days').calendar();
   return reverseMonthDay(reverseDate(future.replace(/\//g, '-')));
 };
