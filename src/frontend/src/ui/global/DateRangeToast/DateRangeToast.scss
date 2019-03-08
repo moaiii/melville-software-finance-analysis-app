@@ -1,0 +1,37 @@
+$tabcolor: aquamarine;
+
+.DateRangeToast {
+  z-index: 1;
+  position: fixed;
+  display: flex;
+  right: 0;
+  top: 30%;
+  transition: transform 0.5s ease-out;
+  transform: translateX(88%);
+
+  &.--isOpen {
+    transition: transform 0.5s ease-out;
+    transform: translateX(0%);
+  }
+
+  &.--animate {}
+
+  @media (min-width: 425px) {}
+
+  @media (min-width: 768px) {}
+
+  @media (min-width: 1024px) {}
+
+  @media (min-width: 1440px) {}
+}
+
+.DateRangeToast__date-picker {
+  background-color: $tabcolor;
+  height: 300px;
+  border-bottom-left-radius: 9px;
+}
+
+.DateRangeToast__tab {
+  height: 50px;
+  background-color: $tabcolor;
+}

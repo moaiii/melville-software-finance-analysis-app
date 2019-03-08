@@ -4,6 +4,7 @@ import { Route, Router } from 'react-router-dom';
 import Auth from '../ui/views/Auth';
 import AppMenu from '../ui/global/Menu';
 import Spinner from '../ui/global/Spinner';
+import DateRangeToast from '../ui/global/DateRangeToast';
 import Calendar from '../ui/views/Calendar';
 import TransactionList from '../ui/views/TransactionList';
 import TransactionUpload from '../ui/views/TransactionUpload';
@@ -15,9 +16,10 @@ import history from "./history";
 
 export default (
   <Router basename="/" history={history}>
-    <div className="Router__container">
+    <div className="App__root">
       <Spinner />
       <AppMenu />
+      <DateRangeToast />
       <Route exact path={'/'} component={Auth} />
       <Route exact path={'/calendar'} component={Calendar} />
       <Route exact path={'/transaction-list'} component={TransactionList} />

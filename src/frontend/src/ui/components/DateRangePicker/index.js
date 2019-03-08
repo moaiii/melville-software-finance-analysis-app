@@ -1,5 +1,5 @@
 // @flow
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import store from '../../../db/store';
 import DateRangePicker from './DateRangePicker.jsx';
 

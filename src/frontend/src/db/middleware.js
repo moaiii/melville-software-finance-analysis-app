@@ -8,6 +8,7 @@ import CreateInvoiceMiddleware from '../ui/views/CreateInvoice/CreateInvoice.mid
 import ProfileMiddleware from '../ui/views/Profile/Profile.middleware';
 import MenuMiddleware from '../ui/global/Menu/Menu.middleware';
 import SpinnerMiddleware from '../ui/global/Spinner/Spinner.middleware';
+import DateRangeToastMiddleware from '../ui/global/DateRangeToast/DateRangeToast.middleware';
 import AnalyticsMiddleware from '../ui/views/Analytics/Analytics.middleware';
 
 const middlewares = {
@@ -22,6 +23,7 @@ const middlewares = {
   ...MenuMiddleware,
   ...SpinnerMiddleware,
   ...AnalyticsMiddleware,
+  ...DateRangeToastMiddleware,
 };
 
 export default (store, next, action) => {

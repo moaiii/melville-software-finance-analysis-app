@@ -3,10 +3,11 @@ import * as React from 'react';
 import { ResponsiveBar } from '@nivo/bar';
 import TextField from '@material-ui/core/TextField';
 import DateRangePicker from '../../components/DateRangePicker';
+import AnalyticsMenu from './subcomponents/menu';
 
 // components
 import Bar from './graphs/Bar/Bar';
-import Line from './graphs/Line/Line';
+// import Line from './graphs/Line/Line';
 
 export default class Analytics extends React.Component {
   constructor() {
@@ -17,19 +18,19 @@ export default class Analytics extends React.Component {
   }
 
   componentDidMount() {
-    this.props.getFormattedGraphData({
-      type: 'line',
-      range: 'year',
-      context: 'tax',
-      meta: {
-        incomeAmount: 20000,
-      },
-    });
     // this.props.getFormattedGraphData({
-    //   type: 'bar',
-    //   range: 'month',
-    //   context: 'in-out',
+    //   type: 'line',
+    //   range: 'year',
+    //   context: 'tax',
+    //   meta: {
+    //     incomeAmount: 20000,
+    //   },
     // });
+    this.props.getFormattedGraphData({
+      type: 'bar',
+      range: 'month',
+      context: 'in-out',
+    });
   }
 
   handleDateRangeChange = (config) => {
@@ -54,7 +55,7 @@ export default class Analytics extends React.Component {
 
   render() {
     const {
-      dateRange, graphData,
+      dateRange, graphData, graphKeys,
     } = this.props;
 
     const { basicSalaryCap } = this.state;
@@ -62,6 +63,7 @@ export default class Analytics extends React.Component {
     return (
       <div className="Analytics">
         <h1>Analytics</h1>
+        <AnalyticsMenu />
         <div className="Analytics__date-range">
           <DateRangePicker
             dateFromCallback={this.handleDateRangeChange}
@@ -84,14 +86,14 @@ export default class Analytics extends React.Component {
         />
         </div>
         <div className="Graph__container">
-          {/* <Bar data={graphData} keys={graphKeys} /> */}
-          <Line
+          <Bar data={graphData} keys={graphKeys} />
+          {/* <Line
             data={graphData}
             labels={{
               x: 'Income',
               y: 'Tax',
             }}
-          />
+          /> */}
         </div>
       </div>
     );

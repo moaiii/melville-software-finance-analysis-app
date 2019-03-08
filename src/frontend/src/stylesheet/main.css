@@ -224,3 +224,24 @@ body {
     width: 58px;
     height: 58px;
     opacity: 0; } }
+
+.DateRangeToast {
+  z-index: 1;
+  position: fixed;
+  display: flex;
+  right: 0;
+  top: 30%;
+  transition: transform 0.5s ease-out;
+  transform: translateX(88%); }
+  .DateRangeToast.--isOpen {
+    transition: transform 0.5s ease-out;
+    transform: translateX(0%); }
+
+.DateRangeToast__date-picker {
+  background-color: aquamarine;
+  height: 300px;
+  border-bottom-left-radius: 9px; }
+
+.DateRangeToast__tab {
+  height: 50px;
+  background-color: aquamarine; }

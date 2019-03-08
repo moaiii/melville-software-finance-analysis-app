@@ -1,5 +1,5 @@
 import React from 'react';
-import { ResponsiveLine } from '@nivo/line';
+// import { ResponsiveLine } from '@nivo/line';
 
 
 export default ({ data, labels }) => {

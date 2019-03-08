@@ -12,6 +12,7 @@ import MenuReducer from '../ui/global/Menu/Menu.reducer';
 import SpinnerReducer from '../ui/global/Spinner/Spinner.reducer';
 import ProfileReducer from '../ui/views/Profile/Profile.reducer';
 import AnalyticsReducer from '../ui/views/Analytics/Analytics.reducer';
+import DateRangeToastReducer from '../ui/global/DateRangeToast/DateRangeToast.reducer';
 
 
 const customMiddleWare = store => next => (action) => {
@@ -31,6 +32,7 @@ const reducers = combineReducers({
   CreateInvoiceReducer,
   ProfileReducer,
   AnalyticsReducer,
+  DateRangeToastReducer,
 });
 
 const logger = createLogger({
