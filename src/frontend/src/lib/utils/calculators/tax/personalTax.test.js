@@ -1,4 +1,5 @@
-import taxRates from './tax';
+import taxRates from './personalTax';
+
 
 describe('Calculates salary tax rates', () => {
   it('returns 0 across all bands if below the allowance threshold', () => {
@@ -10,7 +11,6 @@ describe('Calculates salary tax rates', () => {
   });
   it('returns tax in the basic band and zero in all others', () => {
     const salaryTax = taxRates.calculateSalaryTax(10000, '2018-2019');
-    console.log('salaryTax', salaryTax);
     expect(salaryTax.allowance.tax).toEqual(0);
   });
   it('returns tax in the basic band and zero in all others', () => {

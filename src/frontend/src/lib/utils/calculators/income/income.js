@@ -6,7 +6,7 @@ import { groupByDate } from '../../dates';
  * @param {string} rangeType month | year | quarter
  * @returns {Array<Object>} an object of key value pairs
  */
-const getIncome = (transactions, rangeType = 'month') => {
+const calculateTotalIncome = (transactions, rangeType = 'month') => {
   /** @type {Array<Object>} */
   const incomeTransactions = transactions
     .filter(transaction => transaction.category === 'Income'
@@ -43,7 +43,11 @@ const getIncome = (transactions, rangeType = 'month') => {
     };
   });
 
+  // add everything up
+  finalObject.total = totalsByRange
+    .reduce((acc, cur) => acc + cur, 0);
+
   return finalObject;
 };
 
-export default getIncome;
+export default calculateTotalIncome;

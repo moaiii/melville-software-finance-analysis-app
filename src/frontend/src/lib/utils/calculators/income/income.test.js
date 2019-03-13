@@ -1,4 +1,4 @@
-import getIncome from './income';
+import calculateTotalIncome from './income';
 import transactions from '../../../mocks/transactions.json';
 
 /**
@@ -16,9 +16,9 @@ import transactions from '../../../mocks/transactions.json';
  *   total: number
  */
 
-const _incomeByMonth = getIncome(transactions, 'month');
-const _incomeByQuarter = getIncome(transactions, 'quarter');
-const _incomeByYear = getIncome(transactions, 'year');
+const _incomeByMonth = calculateTotalIncome(transactions, 'month');
+const _incomeByQuarter = calculateTotalIncome(transactions, 'quarter');
+const _incomeByYear = calculateTotalIncome(transactions, 'year');
 
 describe('get Income function', () => {
   it('should return an array of length > 0', () => {

@@ -34,7 +34,7 @@ describe('Earnings per person utility functions', () => {
   it('each person should have a dividend value >= 0', () => {
     _people.forEach(person => {
       const { dividend } = earningsData[person]
-      console.log(earningsData[person])
+
       expect(dividend).toBeTruthy()
       expect(dividend).toBeGreaterThanOrEqual(0)
     })

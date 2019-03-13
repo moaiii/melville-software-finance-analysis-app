@@ -1,15 +1,20 @@
 const groupBy = require('lodash.groupby');
-
+const {expensesEnum, earningsEnum} = require('../../enums');
 
 /**
  * @param {Array<Object>} transactions .
  * @returns {Object<Array>} expensesByCategory .
  */
 const groupExpensesByCategory = (transactions) => {
+  const nonExpensableCategories = [
+    earningsEnum.DIVIDEND
+  ]
   const nonIncomeTransactions = transactions
-    .filter(transaction => parseInt(transaction.in, 10) === 0);
+    .filter(transaction => parseInt(transaction.in, 10) === 0)
+    .filter(transaction => !nonExpensableCategories
+      .includes(transaction.category));
 
-  return groupBy(nonIncomeTransactions, 'Category');
+  return groupBy(nonIncomeTransactions, expensesEnum.CATEGORY);
 };
 
 
@@ -26,11 +31,11 @@ const totalExpensesByCategory = (expensesByCategory) => {
   const totals = _categories
     .map((category) => {
       return expensesByCategory[category]
-        .reduce((acc, cur) => acc + cur.out, 0);
+        .reduce((acc, cur) => acc + parseFloat(cur.out), 0);
     });
 
   _categories.forEach((category, index) => {
-    newObj[category] = totals[index];
+    newObj[category] = Math.ceil(totals[index]);
   });
 
   return newObj;
@@ -41,7 +46,7 @@ const totalExpensesByCategory = (expensesByCategory) => {
  * @param {Array<Object>} transactions .
  * @returns {number} final expense amount
  */
-const totalAllExpenses = (transactions) => {
+const calculateTotalExpenses = (transactions) => {
   const expensesByCategory = groupExpensesByCategory(transactions);
   const totals = totalExpensesByCategory(expensesByCategory);
 
@@ -55,5 +60,5 @@ const totalAllExpenses = (transactions) => {
 export {
   groupExpensesByCategory,
   totalExpensesByCategory,
-  totalAllExpenses,
+  calculateTotalExpenses,
 };

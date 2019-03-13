@@ -2,12 +2,12 @@ import transactions from '../../../mocks/transactions.json';
 import {
   groupExpensesByCategory,
   totalExpensesByCategory,
-  totalAllExpenses,
+  calculateTotalExpenses,
 } from './expenses';
 
 const expensesByCategory = groupExpensesByCategory(transactions);
 const totalByCategory = totalExpensesByCategory(expensesByCategory);
-const totalExpenses = totalAllExpenses(transactions);
+const totalExpenses = calculateTotalExpenses(transactions);
 
 
 describe('groupExpensesByCategory()', () => {
@@ -28,7 +28,7 @@ describe('groupExpensesByCategory()', () => {
     const values = Object.values(expensesByCategory);
     values.forEach((val) => {
       const isIncome = parseInt(val.in, 0) >= 0;
-      expect(isIncome).toBeFalsey();
+      expect(isIncome).toBeFalsy();
     });
   });
 });
@@ -58,7 +58,7 @@ describe('totalExpensesByCategory()', () => {
 });
 
 
-describe('totalAllExpenses()', () => {
+describe('calculateTotalExpenses()', () => {
   it('should return a number', () => {
     const isNumber = totalExpenses.constructor === Number;
     expect(isNumber).toBeTruthy();

@@ -1,3 +1,5 @@
-import { getIncome } from './income';
+import calculateTotalIncome from './income';
 
-export default getIncome;
+export {
+  calculateTotalIncome,
+};
