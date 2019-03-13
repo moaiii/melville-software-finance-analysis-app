@@ -11,6 +11,7 @@ import SpinnerMiddleware from '../ui/global/Spinner/Spinner.middleware';
 import DateRangeToastMiddleware from '../ui/global/DateRangeToast/DateRangeToast.middleware';
 import AnalyticsMiddleware from '../ui/views/Analytics/Analytics.middleware';
 
+
 const middlewares = {
   ...AuthMiddleware,
   ...TransactionListMiddleware,
@@ -25,6 +26,7 @@ const middlewares = {
   ...AnalyticsMiddleware,
   ...DateRangeToastMiddleware,
 };
+
 
 export default (store, next, action) => {
   const middlewareMode = action.payload

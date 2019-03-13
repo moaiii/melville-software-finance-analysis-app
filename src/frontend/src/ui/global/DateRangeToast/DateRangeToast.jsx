@@ -11,7 +11,19 @@ export default class DateRangeToast extends React.Component/* <Props, State> */ 
   constructor() {
     super();
 
+<<<<<<< Updated upstream
     this.state = {};
+=======
+    this.state = {
+      isOpen: true,
+    };
+  }
+
+  componentDidMount(): void {}
+
+  shouldComponentUpdate(nextProps: Props, nextState: State): boolean {
+    return true;
+>>>>>>> Stashed changes
   }
 
   handleDateRangeChange = (x) => {

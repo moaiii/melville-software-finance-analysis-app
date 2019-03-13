@@ -1,29 +1,59 @@
-import categories from '../../constants/categories'
-const groupBy = require('lodash.groupby')
+const groupBy = require('lodash.groupby');
 
-const groupExpensesByCategory = transactions => {
-  return groupBy(transactions, 'Category')
-}
 
-const totalExpensesByCategory = transactionsByCategory => {
-  const newObj = {}
+/**
+ * @param {Array<Object>} transactions .
+ * @returns {Object<Array>} expensesByCategory .
+ */
+const groupExpensesByCategory = (transactions) => {
+  const nonIncomeTransactions = transactions
+    .filter(transaction => parseInt(transaction.in, 10) === 0);
 
-  const categories = Object.keys(transactionsByCategory)
+  return groupBy(nonIncomeTransactions, 'Category');
+};
 
-  const totals = categories.map(category => {
-    return transactionsByCategory[category].reduce(
-      (acc, cur) => acc + cur.out,
-      0
-    )
-  })
 
-  categories.forEach((category, index) => {
-    newObj[category] = totals[index]
-  })
+/**
+ * @param {Object<Array>} expensesByCategory .
+ * @returns {Object<number>} .
+ */
+const totalExpensesByCategory = (expensesByCategory) => {
+  const newObj = {};
 
-  return newObj
-}
+  const _categories = Object
+    .keys(expensesByCategory);
 
-const totalAllExpenses = () => {}
+  const totals = _categories
+    .map((category) => {
+      return expensesByCategory[category]
+        .reduce((acc, cur) => acc + cur.out, 0);
+    });
 
-export { groupExpensesByCategory, totalExpensesByCategory, totalAllExpenses }
+  _categories.forEach((category, index) => {
+    newObj[category] = totals[index];
+  });
+
+  return newObj;
+};
+
+
+/**
+ * @param {Array<Object>} transactions .
+ * @returns {number} final expense amount
+ */
+const totalAllExpenses = (transactions) => {
+  const expensesByCategory = groupExpensesByCategory(transactions);
+  const totals = totalExpensesByCategory(expensesByCategory);
+
+  const finalExpenseAmount = Object
+    .values(totals)
+    .reduce((acc, cur) => acc + cur, 0);
+
+  return finalExpenseAmount;
+};
+
+export {
+  groupExpensesByCategory,
+  totalExpensesByCategory,
+  totalAllExpenses,
+};
