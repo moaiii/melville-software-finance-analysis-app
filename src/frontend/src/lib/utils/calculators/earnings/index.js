@@ -1,5 +1,5 @@
-import earningsPerPerson from './earningsPerPerson';
+import { earningsPerPerson } from './earningsPerPerson';
 
-export default {
+export {
   earningsPerPerson,
 };

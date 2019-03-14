@@ -106,7 +106,7 @@ const calculateTotalTax = (totalIncome, taxYear, salaryCapInput) => {
 };
 
 
-export default {
+export {
   calculateSalaryTax,
   calculateDividendTax,
   calculateTotalTax,

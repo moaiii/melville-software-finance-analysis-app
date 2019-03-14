@@ -6,7 +6,7 @@ import {
 } from './expenses';
 
 const expensesByCategory = groupExpensesByCategory(transactions);
-const totalByCategory = totalExpensesByCategory(expensesByCategory);
+const totalByCategory = totalExpensesByCategory(transactions);
 const totalExpenses = calculateTotalExpenses(transactions);
 
 

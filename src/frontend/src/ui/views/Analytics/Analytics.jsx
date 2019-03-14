@@ -1,19 +1,20 @@
 // @flow
 import * as React from 'react';
-import { ResponsiveBar } from '@nivo/bar';
 import TextField from '@material-ui/core/TextField';
-import DateRangePicker from '../../components/DateRangePicker';
 import AnalyticsMenu from './subcomponents/menu';
 
-// components
-import Bar from './graphs/Bar/Bar';
-// import Line from './graphs/Line/Line';
+// graph components
+import {
+  Bar, Calendar, Waffle, Line, Pie,
+} from '../../components/Graphs';
+
 
 export default class Analytics extends React.Component {
   constructor() {
     super();
     this.state = {
       basicSalaryCap: 8424,
+      graph: null,
     };
   }
 
@@ -53,24 +54,54 @@ export default class Analytics extends React.Component {
     });
   }
 
-  render() {
-    const {
-      dateRange, graphData, graphKeys,
-    } = this.props;
+  getGraph = (config) => {
+    const { type } = config;
 
-    const { basicSalaryCap } = this.state;
+    const props = {
+      data: this.props.graphData,
+      keys: this.props.graphKeys,
+      meta: this.props.graphMeta,
+    };
+
+    switch (type) {
+      case 'line': {
+        return (
+          <Line {...props} />
+        );
+      }
+      case 'pie': {
+        return (
+          <Pie {...props} />
+        );
+      }
+      case 'waffle': {
+        return (
+          <Waffle {...props} />
+        );
+      }
+      case 'bar': {
+        return (
+          <Bar {...props} />
+        );
+      }
+      case 'calendar': {
+        return (
+          <Calendar {...props} />
+        );
+      }
+      default: {
+        return null;
+      }
+    }
+  }
+
+  render() {
+    const { basicSalaryCap, graph } = this.state;
 
     return (
       <div className="Analytics">
         <h1>Analytics</h1>
         <AnalyticsMenu />
-        <div className="Analytics__date-range">
-          <DateRangePicker
-            dateFromCallback={this.handleDateRangeChange}
-            dateToCallback={this.handleDateRangeChange}
-            dateRange={dateRange}
-          />
-        </div>
         <div className={'Analytics__basic-salary-cap'}>
           <TextField
             id="standard-number"
@@ -86,16 +117,23 @@ export default class Analytics extends React.Component {
         />
         </div>
         <div className="Graph__container">
-          <Bar data={graphData} keys={graphKeys} />
-          {/* <Line
-            data={graphData}
-            labels={{
-              x: 'Income',
-              y: 'Tax',
-            }}
-          /> */}
+          { graph }
         </div>
       </div>
     );
   }
 }
+
+
+/**
+ * what was in graph__container
+ *
+ * <Bar data={graphData} keys={graphKeys} />
+    <Line
+      data={graphData}
+      labels={{
+        x: 'Income',
+        y: 'Tax',
+      }}
+    />
+ */

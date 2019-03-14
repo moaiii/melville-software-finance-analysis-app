@@ -1,5 +1,6 @@
 const groupBy = require('lodash.groupby');
-const {expensesEnum, earningsEnum} = require('../../enums');
+const { expensesEnum, earningsEnum } = require('../../enums');
+
 
 /**
  * @param {Array<Object>} transactions .
@@ -7,8 +8,9 @@ const {expensesEnum, earningsEnum} = require('../../enums');
  */
 const groupExpensesByCategory = (transactions) => {
   const nonExpensableCategories = [
-    earningsEnum.DIVIDEND
-  ]
+    earningsEnum.DIVIDEND,
+  ];
+
   const nonIncomeTransactions = transactions
     .filter(transaction => parseInt(transaction.in, 10) === 0)
     .filter(transaction => !nonExpensableCategories
@@ -19,26 +21,28 @@ const groupExpensesByCategory = (transactions) => {
 
 
 /**
- * @param {Object<Array>} expensesByCategory .
+ * @param {Object<Array>} transactions .
  * @returns {Object<number>} .
  */
-const totalExpensesByCategory = (expensesByCategory) => {
-  const newObj = {};
+const totalExpensesByCategory = (transactions) => {
+  const expensesByCategory = groupExpensesByCategory(transactions);
+  const totalsByCategory = {};
 
-  const _categories = Object
+  const categories = Object
     .keys(expensesByCategory);
 
-  const totals = _categories
+  const totals = categories
     .map((category) => {
       return expensesByCategory[category]
         .reduce((acc, cur) => acc + parseFloat(cur.out), 0);
     });
 
-  _categories.forEach((category, index) => {
-    newObj[category] = Math.ceil(totals[index]);
-  });
+  categories
+    .forEach((category, index) => {
+      totalsByCategory[category] = Math.ceil(totals[index]);
+    });
 
-  return newObj;
+  return totalsByCategory;
 };
 
 
@@ -47,8 +51,7 @@ const totalExpensesByCategory = (expensesByCategory) => {
  * @returns {number} final expense amount
  */
 const calculateTotalExpenses = (transactions) => {
-  const expensesByCategory = groupExpensesByCategory(transactions);
-  const totals = totalExpensesByCategory(expensesByCategory);
+  const totals = totalExpensesByCategory(transactions);
 
   const finalExpenseAmount = Object
     .values(totals)

@@ -1,7 +1,19 @@
-import personalTax from './personalTax';
-import corporationTax from './corporationTax';
+import {
+  calculateSalaryTax,
+  calculateDividendTax,
+  calculateTotalTax,
+} from './personalTax';
+import {
+  calculateCorporationTax,
+  calculateNetProfit,
+  calculateGrossProfit,
+} from './corporationTax';
 
-export default {
-  personalTax,
-  corporationTax,
+export {
+  calculateCorporationTax,
+  calculateNetProfit,
+  calculateGrossProfit,
+  calculateSalaryTax,
+  calculateDividendTax,
+  calculateTotalTax,
 };

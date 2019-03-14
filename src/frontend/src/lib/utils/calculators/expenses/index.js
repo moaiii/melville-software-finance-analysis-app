@@ -8,4 +8,4 @@ export {
   groupExpensesByCategory,
   totalExpensesByCategory,
   calculateTotalExpenses,
-}
+};
