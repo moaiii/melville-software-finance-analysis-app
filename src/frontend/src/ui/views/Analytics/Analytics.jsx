@@ -14,7 +14,12 @@ export default class Analytics extends React.Component {
     super();
     this.state = {
       basicSalaryCap: 8424,
-      graph: null,
+      graphConfig: {
+        type: '',
+        range: '',
+        context: '',
+        meta: {},
+      },
     };
   }
 
@@ -56,11 +61,12 @@ export default class Analytics extends React.Component {
 
   getGraph = (config) => {
     const { type } = config;
+    const {graphData, graphKeys, graphMeta} = this.props;
 
     const props = {
-      data: this.props.graphData,
-      keys: this.props.graphKeys,
-      meta: this.props.graphMeta,
+      data: graphData,
+      keys: graphKeys,
+      meta: graphMeta,
     };
 
     switch (type) {
@@ -96,7 +102,7 @@ export default class Analytics extends React.Component {
   }
 
   render() {
-    const { basicSalaryCap, graph } = this.state;
+    const { basicSalaryCap, graphConfig } = this.state;
 
     return (
       <div className="Analytics">
@@ -117,7 +123,7 @@ export default class Analytics extends React.Component {
         />
         </div>
         <div className="Graph__container">
-          { graph }
+          { this.getGraph(graphConfig) }
         </div>
       </div>
     );

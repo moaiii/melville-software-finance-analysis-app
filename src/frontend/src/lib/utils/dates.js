@@ -10,11 +10,11 @@ export const getShortToday = () => {
   return `${today.getFullYear()}-${month}-${today.getDate()}`;
 };
 
-export const reverseDate = (date) => {
+export const reverseDate = (date, separator = '-') => {
   return date
-    .split('-')
+    .split(separator)
     .reverse()
-    .join('-');
+    .join(separator);
 };
 
 export const reverseMonthDay = (date) => {

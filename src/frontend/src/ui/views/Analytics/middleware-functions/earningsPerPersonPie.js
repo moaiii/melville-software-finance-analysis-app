@@ -40,6 +40,13 @@ const flattenDeep = require('lodash.flattendeep');
 export default ({ transactions, meta }) => {
   /** @type {Array<string>} e.g ['salary', dividend', 'pension'] */
   const { earningsTypes } = meta;
+
+  if (earningsTypes.constructor !== Array || earningsTypes.length === 0) {
+    throw new Error(
+      `This earningsTypes array supplied is not valid. ${JSON.stringify(earningsTypes)}`
+    )
+  }
+
   const { earningsPerPerson } = calculators;
   const totalsByPerson = earningsPerPerson(transactions);
 

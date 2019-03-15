@@ -3,33 +3,48 @@ import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 
-function AnalyticsMenu({ props }) {
-  const [anchorEl, setAnchorEl] = React.useState(null);
 
-  function handleClick(event) {
+class AnalyticsMenu extends React.Component {
+  constructor() {
+    super();
+    this.state = {};
+  }
+
+  handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   }
 
-  function handleClose() {
+  handleViewSelection = () => {
     setAnchorEl(null);
   }
 
-  return (
-    <div>
-      <Button
-        aria-owns={anchorEl ? 'simple-menu' : undefined}
-        aria-haspopup="true"
-        onClick={handleClick}
-      >
-        Open Menu
-      </Button>
-      <Menu id="simple-menu" anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleClose}>
-        <MenuItem onClick={handleClose}>Profile</MenuItem>
-        <MenuItem onClick={handleClose}>My account</MenuItem>
-        <MenuItem onClick={handleClose}>Logout</MenuItem>
-      </Menu>
-    </div>
-  );
+  render() {
+    // const timeRangeSelector = (
+
+    // );
+
+
+    return (
+      <div>
+        <Button
+          aria-owns={anchorEl ? 'simple-menu' : undefined}
+          aria-haspopup="true"
+          onClick={handleClick}
+        >
+          View selection
+        </Button>
+        <Menu id="simple-menu" anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleViewSelection}>
+          <MenuItem onClick={() => handleViewSelection}>Overview</MenuItem>
+          <MenuItem onClick={() => handleViewSelection}>Income</MenuItem>
+          <MenuItem onClick={() => handleViewSelection}>Expenses</MenuItem>
+          <MenuItem onClick={() => handleViewSelection}>Tax</MenuItem>
+          <MenuItem onClick={() => handleViewSelection}>Personal Earnings</MenuItem>
+          <MenuItem onClick={() => handleViewSelection}>In/ Out</MenuItem>
+          <MenuItem onClick={() => handleViewSelection}>Balance over time</MenuItem>
+        </Menu>
+      </div>
+    );
+  }
 }
 
 export default AnalyticsMenu;
